@@ -24,11 +24,13 @@ type AccountResource struct {
 }
 
 type AccountResourceModel struct {
-	AccountId       types.String `tfsdk:"id"`
-	Name     types.String `tfsdk:"name"`
-	Code     types.String `tfsdk:"code"`
+	AccountId         types.String `tfsdk:"id"`
+	Name              types.String `tfsdk:"name"`
+	Description       types.String `tfsdk:"description"`
+	Code              types.String `tfsdk:"code"`
 	NormalBalanceType types.String `tfsdk:"normal_balance_type"`
-	Status   types.String `tfsdk:"status"`
+	Status            types.String `tfsdk:"status"`
+	ExternalId        types.String `tfsdk:"external_id"`
 }
 
 // toDebitOrCredit converts a string to the DebitOrCredit enum type.
@@ -71,6 +73,10 @@ func (r *AccountResource) Schema(ctx context.Context, req resource.SchemaRequest
 				MarkdownDescription: "Name of the account.",
 				Required:            true,
 			},
+			"description": schema.StringAttribute{
+				MarkdownDescription: "Description of the account.",
+				Optional:            true,
+			},
 			"code": schema.StringAttribute{
 				MarkdownDescription: "code",
 				Required:            true,
@@ -84,6 +90,10 @@ func (r *AccountResource) Schema(ctx context.Context, req resource.SchemaRequest
 				MarkdownDescription: "status",
 				Default:             stringdefault.StaticString("ACTIVE"),
 				Computed:            true,
+			},
+			"external_id": schema.StringAttribute{
+				MarkdownDescription: "externalId",
+				Optional:            true,
 			},
 		},
 	}
@@ -131,11 +141,13 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 	}
 
 	input := AccountCreateInput{
-		AccountId: data.AccountId.ValueString(),
-		Name:      data.Name.ValueString(),
-		Code: data.Code.ValueString(),
+		AccountId:         data.AccountId.ValueString(),
+		Name:              data.Name.ValueString(),
+		Description:       data.Description.ValueString(),
+		Code:              data.Code.ValueString(),
 		NormalBalanceType: normalBalanceType,
-		Status:  status,
+		Status:            status,
+		ExternalId:        data.ExternalId.ValueString(),
 	}
 
 	response, err := accountCreate(ctx, *r.client, input)

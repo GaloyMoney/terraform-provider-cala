@@ -1,10 +1,10 @@
 package main
 
 import (
-	"log"
 	"context"
 	"github.com/GaloyMoney/terraform-provider-cala/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
+	"log"
 )
 
 // Generate the Terraform provider documentation using `tfplugindocs`:

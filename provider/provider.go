@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	envVarName          = "CALA_API_ENDPOINT"
+	envVarName         = "CALA_API_ENDPOINT"
 	errMissingEndpoint = "Required endpoint could not be found. Please set the endpoint using an input variable in the provider configuration block or by using the `" + envVarName + "` environment variable."
 )
 
@@ -77,8 +77,8 @@ func (p *CalaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 
 	httpClient := http.Client{
 		Transport: &authedTransport{
-			endpoint:   endpoint,
-			wrapped: http.DefaultTransport,
+			endpoint: endpoint,
+			wrapped:  http.DefaultTransport,
 		},
 	}
 
