@@ -5,6 +5,13 @@ version = 0.0.1
 os_arch = $(shell go env GOOS)_$(shell go env GOARCH)
 provider_path = registry.terraform.io/galoymoney/cala/$(version)/$(os_arch)/
 
-install: mkdir -p ~/.terraform.d/plugins/${provider_path}
+install: build
+	mkdir -p ~/.terraform.d/plugins/${provider_path}
 	mv ${BINARY} ~/.terraform.d/plugins/${provider_path}
 	rm -rf example/.terraform example/.terraform.lock.hcl example/terraform.tfstate*
+
+build:
+	go build -o $(BINARY) main.go
+
+generate:
+	go run github.com/Khan/genqlient

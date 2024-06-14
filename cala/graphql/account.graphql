@@ -1,0 +1,17 @@
+mutation accountCreate($input: AccountCreateInput!) {
+  accountCreate(
+    input: $input
+  ) {
+    account {
+      id
+      accountId
+      code
+      name
+      normalBalanceType
+      status
+      externalId
+      description
+      metadata
+    }
+  }
+}

@@ -1,0 +1,11 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: 'ci(release): release version 0.1.0'
+      sha: b93ba8af33b458ef48bf79680cf76445ad206eba
+      tags:
+      - 0.1.0
+    path: vendor
+  path: schema
+kind: LockConfig
