@@ -7,6 +7,7 @@ import (
 	"github.com/Khan/genqlient/graphql"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
@@ -26,6 +27,8 @@ type AccountResourceModel struct {
 	AccountId       types.String `tfsdk:"id"`
 	Name     types.String `tfsdk:"name"`
 	Code     types.String `tfsdk:"code"`
+	NormalBalanceType types.String `tfsdk:"normal_balance_type"`
+	Status   types.String `tfsdk:"status"`
 }
 
 func (r *AccountResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -36,7 +39,7 @@ func (r *AccountResource) Schema(ctx context.Context, req resource.SchemaRequest
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "Cala account.",
 		Attributes: map[string]schema.Attribute{
-			"account_id": schema.StringAttribute{
+			"id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account.",
 				Required:            true,
 			},
@@ -47,6 +50,16 @@ func (r *AccountResource) Schema(ctx context.Context, req resource.SchemaRequest
 			"code": schema.StringAttribute{
 				MarkdownDescription: "code",
 				Required:            true,
+			},
+			"normal_balance_type": schema.StringAttribute{
+				MarkdownDescription: "normalBalanceType",
+				Default:             stringdefault.StaticString("CREDIT"),
+				Computed:            true,
+			},
+			"status": schema.StringAttribute{
+				MarkdownDescription: "status",
+				Default:             stringdefault.StaticString("ACTIVE"),
+				Computed:            true,
 			},
 		},
 	}
@@ -85,6 +98,8 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 		AccountId: data.AccountId.ValueString(),
 		Name:      data.Name.ValueString(),
 		Code: data.Code.ValueString(),
+		NormalBalanceType: DebitOrCreditCredit,
+		Status: StatusActive,
 	}
 
 	response, err := accountCreate(ctx, *r.client, input)

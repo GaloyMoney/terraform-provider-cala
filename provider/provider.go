@@ -42,7 +42,7 @@ func (p *CalaProvider) Schema(ctx context.Context, req provider.SchemaRequest, r
 		Attributes: map[string]schema.Attribute{
 			"endpoint": schema.StringAttribute{
 				MarkdownDescription: "The endpoint for cala server.",
-				Optional:            false,
+				Required:            true,
 			},
 		},
 	}
