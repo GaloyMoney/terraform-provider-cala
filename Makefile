@@ -1,7 +1,7 @@
 BIN_OUT_DIR := out
 BINARY := $(BIN_OUT_DIR)/terraform-provider-cala
 
-version = 0.0.1
+version = 0.0.7
 os_arch = $(shell go env GOOS)_$(shell go env GOARCH)
 provider_path = registry.terraform.io/galoymoney/cala/$(version)/$(os_arch)/
 
@@ -15,3 +15,6 @@ build:
 
 generate:
 	go run github.com/Khan/genqlient
+
+gen-docs:
+	 go generate ./...
