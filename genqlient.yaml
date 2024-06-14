@@ -9,3 +9,4 @@ bindings:
     type: string
   JSON:
     type: encoding/json.RawMessage
+optional: pointer
