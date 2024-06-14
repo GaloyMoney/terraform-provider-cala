@@ -18,7 +18,7 @@ var (
 
 func main() {
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/terraform-community-providers/cala",
+		Address: "registry.terraform.io/GaloyMoney/cala",
 	}
 
 	err := providerserver.Serve(context.Background(), provider.New(version), opts)

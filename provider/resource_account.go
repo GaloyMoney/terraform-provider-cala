@@ -31,6 +31,30 @@ type AccountResourceModel struct {
 	Status   types.String `tfsdk:"status"`
 }
 
+// toDebitOrCredit converts a string to the DebitOrCredit enum type.
+func toDebitOrCredit(value string) (DebitOrCredit, error) {
+	switch value {
+	case "DEBIT":
+		return DebitOrCreditDebit, nil
+	case "CREDIT":
+		return DebitOrCreditCredit, nil
+	default:
+		return DebitOrCredit(""), fmt.Errorf("invalid value for DebitOrCredit: %s", value)
+	}
+}
+
+// toStatus converts a string to the Status enum type.
+func toStatus(value string) (Status, error) {
+	switch value {
+	case "ACTIVE":
+		return StatusActive, nil
+	case "INACTIVE":
+		return StatusLocked, nil
+	default:
+		return Status(""), fmt.Errorf("invalid value for Status: %s", value)
+	}
+}
+
 func (r *AccountResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_account"
 }
@@ -94,12 +118,24 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 		return
 	}
 
+	normalBalanceType, err := toDebitOrCredit(data.NormalBalanceType.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
+		return
+	}
+
+	status, err := toStatus(data.Status.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("Invalid Status", fmt.Sprintf("Unable to convert status to Status: %s", err))
+		return
+	}
+
 	input := AccountCreateInput{
 		AccountId: data.AccountId.ValueString(),
 		Name:      data.Name.ValueString(),
 		Code: data.Code.ValueString(),
-		NormalBalanceType: DebitOrCreditCredit,
-		Status: StatusActive,
+		NormalBalanceType: normalBalanceType,
+		Status:  status,
 	}
 
 	response, err := accountCreate(ctx, *r.client, input)
