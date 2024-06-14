@@ -1,18 +1,7 @@
-resource "cala_account" "name" {
-  name = "name"
-  code = "slghsg"
-  id   = "1ce41f76-1e86-4879-b326-0c4a8501ded3"
-}
+resource "random_uuid" "alice_account_id" { }
 
-provider "cala" {
-  endpoint = "http://localhost:2252"
-}
-
-terraform {
-  required_providers {
-    cala = {
-      source  = "galoymoney/cala"
-      version = "0.0.1"
-    }
-  }
+resource "cala_account" "alice" {
+  id   = random_uuid.alice_account_id.result
+  name = "Alice Account"
+  code = "USER.ACCOUNTS.${random_uuid.alice_account_id.result}"
 }
