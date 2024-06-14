@@ -10,21 +10,21 @@ import (
 )
 
 type AccountCreateInput struct {
-	AccountId         string          `json:"accountId"`
-	ExternalId        string          `json:"externalId"`
-	Code              string          `json:"code"`
-	Name              string          `json:"name"`
-	NormalBalanceType DebitOrCredit   `json:"normalBalanceType"`
-	Description       string          `json:"description"`
-	Status            Status          `json:"status"`
-	Metadata          json.RawMessage `json:"metadata"`
+	AccountId         string           `json:"accountId"`
+	ExternalId        *string          `json:"externalId"`
+	Code              string           `json:"code"`
+	Name              string           `json:"name"`
+	NormalBalanceType DebitOrCredit    `json:"normalBalanceType"`
+	Description       *string          `json:"description"`
+	Status            Status           `json:"status"`
+	Metadata          *json.RawMessage `json:"metadata"`
 }
 
 // GetAccountId returns AccountCreateInput.AccountId, and is useful for accessing the field via an interface.
 func (v *AccountCreateInput) GetAccountId() string { return v.AccountId }
 
 // GetExternalId returns AccountCreateInput.ExternalId, and is useful for accessing the field via an interface.
-func (v *AccountCreateInput) GetExternalId() string { return v.ExternalId }
+func (v *AccountCreateInput) GetExternalId() *string { return v.ExternalId }
 
 // GetCode returns AccountCreateInput.Code, and is useful for accessing the field via an interface.
 func (v *AccountCreateInput) GetCode() string { return v.Code }
@@ -36,13 +36,13 @@ func (v *AccountCreateInput) GetName() string { return v.Name }
 func (v *AccountCreateInput) GetNormalBalanceType() DebitOrCredit { return v.NormalBalanceType }
 
 // GetDescription returns AccountCreateInput.Description, and is useful for accessing the field via an interface.
-func (v *AccountCreateInput) GetDescription() string { return v.Description }
+func (v *AccountCreateInput) GetDescription() *string { return v.Description }
 
 // GetStatus returns AccountCreateInput.Status, and is useful for accessing the field via an interface.
 func (v *AccountCreateInput) GetStatus() Status { return v.Status }
 
 // GetMetadata returns AccountCreateInput.Metadata, and is useful for accessing the field via an interface.
-func (v *AccountCreateInput) GetMetadata() json.RawMessage { return v.Metadata }
+func (v *AccountCreateInput) GetMetadata() *json.RawMessage { return v.Metadata }
 
 type DebitOrCredit string
 
@@ -78,15 +78,15 @@ func (v *accountCreateAccountCreateAccountCreatePayload) GetAccount() accountCre
 
 // accountCreateAccountCreateAccountCreatePayloadAccount includes the requested fields of the GraphQL type Account.
 type accountCreateAccountCreateAccountCreatePayloadAccount struct {
-	Id                string          `json:"id"`
-	AccountId         string          `json:"accountId"`
-	Code              string          `json:"code"`
-	Name              string          `json:"name"`
-	NormalBalanceType DebitOrCredit   `json:"normalBalanceType"`
-	Status            Status          `json:"status"`
-	ExternalId        string          `json:"externalId"`
-	Description       string          `json:"description"`
-	Metadata          json.RawMessage `json:"metadata"`
+	Id                string           `json:"id"`
+	AccountId         string           `json:"accountId"`
+	Code              string           `json:"code"`
+	Name              string           `json:"name"`
+	NormalBalanceType DebitOrCredit    `json:"normalBalanceType"`
+	Status            Status           `json:"status"`
+	ExternalId        *string          `json:"externalId"`
+	Description       *string          `json:"description"`
+	Metadata          *json.RawMessage `json:"metadata"`
 }
 
 // GetId returns accountCreateAccountCreateAccountCreatePayloadAccount.Id, and is useful for accessing the field via an interface.
@@ -112,17 +112,17 @@ func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetNormalBalance
 func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetStatus() Status { return v.Status }
 
 // GetExternalId returns accountCreateAccountCreateAccountCreatePayloadAccount.ExternalId, and is useful for accessing the field via an interface.
-func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetExternalId() string {
+func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetExternalId() *string {
 	return v.ExternalId
 }
 
 // GetDescription returns accountCreateAccountCreateAccountCreatePayloadAccount.Description, and is useful for accessing the field via an interface.
-func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetDescription() string {
+func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetDescription() *string {
 	return v.Description
 }
 
 // GetMetadata returns accountCreateAccountCreateAccountCreatePayloadAccount.Metadata, and is useful for accessing the field via an interface.
-func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetMetadata() json.RawMessage {
+func (v *accountCreateAccountCreateAccountCreatePayloadAccount) GetMetadata() *json.RawMessage {
 	return v.Metadata
 }
 
