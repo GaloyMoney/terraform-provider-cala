@@ -143,11 +143,11 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 	input := AccountCreateInput{
 		AccountId:         data.AccountId.ValueString(),
 		Name:              data.Name.ValueString(),
-		Description:       data.Description.ValueString(),
+		Description:       data.Description.ValueStringPointer(),
 		Code:              data.Code.ValueString(),
 		NormalBalanceType: normalBalanceType,
 		Status:            status,
-		ExternalId:        data.ExternalId.ValueString(),
+		ExternalId:        data.ExternalId.ValueStringPointer(),
 	}
 
 	response, err := accountCreate(ctx, *r.client, input)
