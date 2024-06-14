@@ -1,3 +1,9 @@
+name: release
+on:
+  push:
+    tags:
+      - 'v*'
+
 jobs:
   terraform-provider-release:
     name: 'Terraform Provider Release'
