@@ -31,6 +31,11 @@ resource "cala_account" "alice" {
 - `id` (String) ID of the account.
 - `name` (String) Name of the account.
 
+### Optional
+
+- `description` (String) Description of the account.
+- `external_id` (String) externalId
+
 ### Read-Only
 
 - `normal_balance_type` (String) normalBalanceType
