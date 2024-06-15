@@ -4,6 +4,7 @@ mutation accountSetCreate($input: AccountSetCreateInput!) {
   ) {
     accountSet {
       accountSetId
+      journalId
       name
       normalBalanceType
       description

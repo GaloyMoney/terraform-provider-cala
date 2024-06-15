@@ -6,6 +6,10 @@ module "account" {
   source = "./resources/cala_account"
 }
 
+module "journal" {
+  source = "./resources/cala_journal"
+}
+
 module "account_set" {
   source = "./resources/cala_account_set"
 }

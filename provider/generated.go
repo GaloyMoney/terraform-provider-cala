@@ -82,6 +82,25 @@ const (
 	DebitOrCreditCredit DebitOrCredit = "CREDIT"
 )
 
+type JournalCreateInput struct {
+	JournalId   string  `json:"journalId"`
+	Name        string  `json:"name"`
+	Status      Status  `json:"status"`
+	Description *string `json:"description"`
+}
+
+// GetJournalId returns JournalCreateInput.JournalId, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetJournalId() string { return v.JournalId }
+
+// GetName returns JournalCreateInput.Name, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetName() string { return v.Name }
+
+// GetStatus returns JournalCreateInput.Status, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetStatus() Status { return v.Status }
+
+// GetDescription returns JournalCreateInput.Description, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetDescription() *string { return v.Description }
+
 type Status string
 
 const (
@@ -104,6 +123,14 @@ type __accountSetCreateInput struct {
 
 // GetInput returns __accountSetCreateInput.Input, and is useful for accessing the field via an interface.
 func (v *__accountSetCreateInput) GetInput() AccountSetCreateInput { return v.Input }
+
+// __journalCreateInput is used internally by genqlient
+type __journalCreateInput struct {
+	Input JournalCreateInput `json:"input"`
+}
+
+// GetInput returns __journalCreateInput.Input, and is useful for accessing the field via an interface.
+func (v *__journalCreateInput) GetInput() JournalCreateInput { return v.Input }
 
 // accountCreateAccountCreateAccountCreatePayload includes the requested fields of the GraphQL type AccountCreatePayload.
 type accountCreateAccountCreateAccountCreatePayload struct {
@@ -184,6 +211,7 @@ func (v *accountSetCreateAccountSetCreateAccountSetCreatePayload) GetAccountSet(
 // accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet includes the requested fields of the GraphQL type AccountSet.
 type accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet struct {
 	AccountSetId      string           `json:"accountSetId"`
+	JournalId         string           `json:"journalId"`
 	Name              string           `json:"name"`
 	NormalBalanceType DebitOrCredit    `json:"normalBalanceType"`
 	Description       *string          `json:"description"`
@@ -193,6 +221,11 @@ type accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet struct {
 // GetAccountSetId returns accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet.AccountSetId, and is useful for accessing the field via an interface.
 func (v *accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet) GetAccountSetId() string {
 	return v.AccountSetId
+}
+
+// GetJournalId returns accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet.JournalId, and is useful for accessing the field via an interface.
+func (v *accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet) GetJournalId() string {
+	return v.JournalId
 }
 
 // GetName returns accountSetCreateAccountSetCreateAccountSetCreatePayloadAccountSet.Name, and is useful for accessing the field via an interface.
@@ -223,6 +256,50 @@ type accountSetCreateResponse struct {
 // GetAccountSetCreate returns accountSetCreateResponse.AccountSetCreate, and is useful for accessing the field via an interface.
 func (v *accountSetCreateResponse) GetAccountSetCreate() accountSetCreateAccountSetCreateAccountSetCreatePayload {
 	return v.AccountSetCreate
+}
+
+// journalCreateJournalCreateJournalCreatePayload includes the requested fields of the GraphQL type JournalCreatePayload.
+type journalCreateJournalCreateJournalCreatePayload struct {
+	Journal journalCreateJournalCreateJournalCreatePayloadJournal `json:"journal"`
+}
+
+// GetJournal returns journalCreateJournalCreateJournalCreatePayload.Journal, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayload) GetJournal() journalCreateJournalCreateJournalCreatePayloadJournal {
+	return v.Journal
+}
+
+// journalCreateJournalCreateJournalCreatePayloadJournal includes the requested fields of the GraphQL type Journal.
+type journalCreateJournalCreateJournalCreatePayloadJournal struct {
+	JournalId   string  `json:"journalId"`
+	Name        string  `json:"name"`
+	Description *string `json:"description"`
+	Status      Status  `json:"status"`
+}
+
+// GetJournalId returns journalCreateJournalCreateJournalCreatePayloadJournal.JournalId, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetJournalId() string {
+	return v.JournalId
+}
+
+// GetName returns journalCreateJournalCreateJournalCreatePayloadJournal.Name, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetName() string { return v.Name }
+
+// GetDescription returns journalCreateJournalCreateJournalCreatePayloadJournal.Description, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetDescription() *string {
+	return v.Description
+}
+
+// GetStatus returns journalCreateJournalCreateJournalCreatePayloadJournal.Status, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetStatus() Status { return v.Status }
+
+// journalCreateResponse is returned by journalCreate on success.
+type journalCreateResponse struct {
+	JournalCreate journalCreateJournalCreateJournalCreatePayload `json:"journalCreate"`
+}
+
+// GetJournalCreate returns journalCreateResponse.JournalCreate, and is useful for accessing the field via an interface.
+func (v *journalCreateResponse) GetJournalCreate() journalCreateJournalCreateJournalCreatePayload {
+	return v.JournalCreate
 }
 
 // The query or mutation executed by accountCreate.
@@ -275,6 +352,7 @@ mutation accountSetCreate ($input: AccountSetCreateInput!) {
 	accountSetCreate(input: $input) {
 		accountSet {
 			accountSetId
+			journalId
 			name
 			normalBalanceType
 			description
@@ -299,6 +377,46 @@ func accountSetCreate(
 	var err_ error
 
 	var data_ accountSetCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by journalCreate.
+const journalCreate_Operation = `
+mutation journalCreate ($input: JournalCreateInput!) {
+	journalCreate(input: $input) {
+		journal {
+			journalId
+			name
+			description
+			status
+		}
+	}
+}
+`
+
+func journalCreate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	input JournalCreateInput,
+) (*journalCreateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "journalCreate",
+		Query:  journalCreate_Operation,
+		Variables: &__journalCreateInput{
+			Input: input,
+		},
+	}
+	var err_ error
+
+	var data_ journalCreateResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

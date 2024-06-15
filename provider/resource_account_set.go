@@ -25,6 +25,7 @@ type AccountSetResource struct {
 
 type AccountSetResourceModel struct {
 	AccountSetId      types.String `tfsdk:"id"`
+	JournalId         types.String `tfsdk:"journal_id"`
 	Name              types.String `tfsdk:"name"`
 	Description       types.String `tfsdk:"description"`
 	NormalBalanceType types.String `tfsdk:"normal_balance_type"`
@@ -44,6 +45,10 @@ func (r *AccountSetResource) Schema(ctx context.Context, req resource.SchemaRequ
 			},
 			"name": schema.StringAttribute{
 				MarkdownDescription: "Name of the account.",
+				Required:            true,
+			},
+			"journal_id": schema.StringAttribute{
+				MarkdownDescription: "ID of the journal.",
 				Required:            true,
 			},
 			"description": schema.StringAttribute{
@@ -101,6 +106,7 @@ func (r *AccountSetResource) Create(ctx context.Context, req resource.CreateRequ
 
 	input := AccountSetCreateInput{
 		AccountSetId:      data.AccountSetId.ValueString(),
+		JournalId:         data.JournalId.ValueString(),
 		Name:              data.Name.ValueString(),
 		Description:       data.Description.ValueStringPointer(),
 		NormalBalanceType: normalBalanceType,
@@ -118,6 +124,7 @@ func (r *AccountSetResource) Create(ctx context.Context, req resource.CreateRequ
 	account := response.AccountSetCreate.AccountSet
 
 	data.AccountSetId = types.StringValue(account.AccountSetId)
+	data.JournalId = types.StringValue(account.JournalId)
 	data.Name = types.StringValue(account.Name)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
