@@ -91,6 +91,7 @@ func (p *CalaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 func (p *CalaProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewAccountResource,
+		NewAccountSetResource,
 	}
 }
 

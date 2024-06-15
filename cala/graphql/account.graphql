@@ -3,7 +3,6 @@ mutation accountCreate($input: AccountCreateInput!) {
     input: $input
   ) {
     account {
-      id
       accountId
       code
       name

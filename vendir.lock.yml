@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'ci(release): release version 0.1.0'
-      sha: b93ba8af33b458ef48bf79680cf76445ad206eba
+      commitTitle: 'chore: add tx_template_id to transactions table (#113)'
+      sha: eae5dc54d0c0c9c40127c8706d5ee43e47aef4e0
       tags:
-      - 0.1.0
+      - 0.2.15-9-geae5dc5
     path: vendor
   path: schema
 kind: LockConfig

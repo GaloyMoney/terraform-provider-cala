@@ -1,6 +1,7 @@
 type Account {
 	id: ID!
 	accountId: UUID!
+	version: Int!
 	code: String!
 	name: String!
 	normalBalanceType: DebitOrCredit!
@@ -8,7 +9,10 @@ type Account {
 	externalId: String
 	description: String
 	metadata: JSON
-	balance(journalId: UUID!, currency: CurrencyCode!): Balance!
+	createdAt: Timestamp!
+	modifiedAt: Timestamp!
+	balance(journalId: UUID!, currency: CurrencyCode!): Balance
+	sets(first: Int!, after: String): AccountSetConnection!
 }
 
 type AccountConnection {
@@ -35,6 +39,7 @@ input AccountCreateInput {
 	description: String
 	status: Status! = ACTIVE
 	metadata: JSON
+	accountSetIds: [UUID!]
 }
 
 type AccountCreatePayload {
@@ -53,6 +58,102 @@ type AccountEdge {
 	A cursor for use in pagination
 	"""
 	cursor: String!
+}
+
+type AccountSet {
+	id: ID!
+	accountSetId: UUID!
+	version: Int!
+	journalId: UUID!
+	name: String!
+	normalBalanceType: DebitOrCredit!
+	description: String
+	metadata: JSON
+	createdAt: Timestamp!
+	modifiedAt: Timestamp!
+	balance(currency: CurrencyCode!): Balance
+}
+
+type AccountSetConnection {
+	"""
+	Information to aid in pagination.
+	"""
+	pageInfo: PageInfo!
+	"""
+	A list of edges.
+	"""
+	edges: [AccountSetEdge!]!
+	"""
+	A list of nodes.
+	"""
+	nodes: [AccountSet!]!
+}
+
+input AccountSetCreateInput {
+	accountSetId: UUID!
+	journalId: UUID!
+	name: String!
+	normalBalanceType: DebitOrCredit! = CREDIT
+	description: String
+	metadata: JSON
+}
+
+type AccountSetCreatePayload {
+	accountSet: AccountSet!
+}
+
+"""
+An edge in a connection.
+"""
+type AccountSetEdge {
+	"""
+	The item at the end of the edge
+	"""
+	node: AccountSet!
+	"""
+	A cursor for use in pagination
+	"""
+	cursor: String!
+}
+
+enum AccountSetMemberType {
+	ACCOUNT
+	ACCOUNT_SET
+}
+
+input AccountSetUpdateInput {
+	name: String
+	normalBalanceType: DebitOrCredit
+	description: String
+	metadata: JSON
+}
+
+type AccountSetUpdatePayload {
+	accountSet: AccountSet!
+}
+
+input AccountUpdateInput {
+	externalId: String
+	code: String
+	name: String
+	normalBalanceType: DebitOrCredit
+	description: String
+	status: Status
+	metadata: JSON
+}
+
+type AccountUpdatePayload {
+	account: Account!
+}
+
+input AddToAccountSetInput {
+	accountSetId: UUID!
+	memberId: UUID!
+	memberType: AccountSetMemberType!
+}
+
+type AddToAccountSetPayload {
+	accountSet: AccountSet!
 }
 
 type Balance {
@@ -76,6 +177,7 @@ type BalanceAmount {
 
 
 input CalaOutboxImportJobCreateInput {
+	jobId: UUID!
 	name: String!
 	description: String
 	endpoint: String!
@@ -152,21 +254,32 @@ type JobEdge {
 type Journal {
 	id: ID!
 	journalId: UUID!
+	version: Int!
 	name: String!
-	externalId: String
 	status: Status!
 	description: String
+	createdAt: Timestamp!
+	modifiedAt: Timestamp!
 }
 
 input JournalCreateInput {
 	journalId: UUID!
 	name: String!
-	externalId: String
 	status: Status! = ACTIVE
 	description: String
 }
 
 type JournalCreatePayload {
+	journal: Journal!
+}
+
+input JournalUpdateInput {
+	name: String
+	status: Status
+	description: String
+}
+
+type JournalUpdatePayload {
 	journal: Journal!
 }
 
@@ -178,7 +291,12 @@ type Money {
 type Mutation {
 	calaOutboxImportJobCreate(input: CalaOutboxImportJobCreateInput!): CalaOutboxImportJobCreatePayload!
 	accountCreate(input: AccountCreateInput!): AccountCreatePayload!
+	accountUpdate(id: UUID!, input: AccountUpdateInput!): AccountUpdatePayload!
+	accountSetCreate(input: AccountSetCreateInput!): AccountSetCreatePayload!
+	accountSetUpdate(id: UUID!, input: AccountSetUpdateInput!): AccountSetUpdatePayload!
+	addToAccountSet(input: AddToAccountSetInput!): AddToAccountSetPayload!
 	journalCreate(input: JournalCreateInput!): JournalCreatePayload!
+	journalUpdate(id: UUID!, input: JournalUpdateInput!): JournalUpdatePayload!
 	txTemplateCreate(input: TxTemplateCreateInput!): TxTemplateCreatePayload!
 	postTransaction(input: TransactionInput!): PostTransactionPayload!
 }
@@ -235,9 +353,18 @@ type PostTransactionPayload {
 }
 
 type Query {
-	accountByExternalId(externalId: String!): Account!
+	serverVersion: String!
+	account(id: UUID!): Account
+	accountByExternalId(externalId: String!): Account
+	accountByCode(code: String!): Account
 	accounts(first: Int!, after: String): AccountConnection!
-	balance(journalId: UUID!, accountId: UUID!, currency: CurrencyCode!): Balance!
+	accountSet(id: UUID!): AccountSet
+	journal(id: UUID!): Journal
+	balance(journalId: UUID!, accountId: UUID!, currency: CurrencyCode!): Balance
+	transaction(id: UUID!): Transaction
+	transactionByExternalId(externalId: String!): Transaction
+	txTemplate(id: UUID!): TxTemplate
+	txTemplateByCode(code: String!): TxTemplate
 	jobs(first: Int!, after: String): JobConnection!
 }
 
@@ -247,9 +374,12 @@ enum Status {
 }
 
 
+scalar Timestamp
+
 type Transaction {
 	id: ID!
 	transactionId: UUID!
+	version: Int!
 	txTemplateId: UUID!
 	journalId: UUID!
 	effective: Date!
@@ -257,6 +387,8 @@ type Transaction {
 	externalId: String
 	description: String
 	metadata: JSON
+	createdAt: Timestamp!
+	modifiedAt: Timestamp!
 }
 
 input TransactionInput {
@@ -277,12 +409,15 @@ type TxInput {
 type TxTemplate {
 	id: ID!
 	txTemplateId: UUID!
+	version: Int!
 	code: String!
 	params: [ParamDefinition!]
 	txInput: TxInput!
 	entries: [EntryInput!]!
 	description: String
 	metadata: JSON
+	createdAt: Timestamp!
+	modifiedAt: Timestamp!
 }
 
 input TxTemplateCreateInput {

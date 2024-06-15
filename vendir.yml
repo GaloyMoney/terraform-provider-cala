@@ -6,7 +6,7 @@ directories:
   - path: vendor
     git:
       url: https://github.com/GaloyMoney/cala.git
-      ref: 0.1.0
+      ref: main
     includePaths:
     - cala-server/schema.graphql
     newRootPath: cala-server
