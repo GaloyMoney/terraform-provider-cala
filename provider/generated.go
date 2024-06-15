@@ -51,6 +51,29 @@ const (
 	DebitOrCreditCredit DebitOrCredit = "CREDIT"
 )
 
+type JournalCreateInput struct {
+	JournalId   string  `json:"journalId"`
+	Name        string  `json:"name"`
+	ExternalId  *string `json:"externalId"`
+	Status      Status  `json:"status"`
+	Description *string `json:"description"`
+}
+
+// GetJournalId returns JournalCreateInput.JournalId, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetJournalId() string { return v.JournalId }
+
+// GetName returns JournalCreateInput.Name, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetName() string { return v.Name }
+
+// GetExternalId returns JournalCreateInput.ExternalId, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetExternalId() *string { return v.ExternalId }
+
+// GetStatus returns JournalCreateInput.Status, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetStatus() Status { return v.Status }
+
+// GetDescription returns JournalCreateInput.Description, and is useful for accessing the field via an interface.
+func (v *JournalCreateInput) GetDescription() *string { return v.Description }
+
 type Status string
 
 const (
@@ -65,6 +88,14 @@ type __accountCreateInput struct {
 
 // GetInput returns __accountCreateInput.Input, and is useful for accessing the field via an interface.
 func (v *__accountCreateInput) GetInput() AccountCreateInput { return v.Input }
+
+// __journalCreateInput is used internally by genqlient
+type __journalCreateInput struct {
+	Input JournalCreateInput `json:"input"`
+}
+
+// GetInput returns __journalCreateInput.Input, and is useful for accessing the field via an interface.
+func (v *__journalCreateInput) GetInput() JournalCreateInput { return v.Input }
 
 // accountCreateAccountCreateAccountCreatePayload includes the requested fields of the GraphQL type AccountCreatePayload.
 type accountCreateAccountCreateAccountCreatePayload struct {
@@ -136,6 +167,60 @@ func (v *accountCreateResponse) GetAccountCreate() accountCreateAccountCreateAcc
 	return v.AccountCreate
 }
 
+// journalCreateJournalCreateJournalCreatePayload includes the requested fields of the GraphQL type JournalCreatePayload.
+type journalCreateJournalCreateJournalCreatePayload struct {
+	Journal journalCreateJournalCreateJournalCreatePayloadJournal `json:"journal"`
+}
+
+// GetJournal returns journalCreateJournalCreateJournalCreatePayload.Journal, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayload) GetJournal() journalCreateJournalCreateJournalCreatePayloadJournal {
+	return v.Journal
+}
+
+// journalCreateJournalCreateJournalCreatePayloadJournal includes the requested fields of the GraphQL type Journal.
+type journalCreateJournalCreateJournalCreatePayloadJournal struct {
+	Id          string  `json:"id"`
+	JournalId   string  `json:"journalId"`
+	Name        string  `json:"name"`
+	ExternalId  *string `json:"externalId"`
+	Status      Status  `json:"status"`
+	Description *string `json:"description"`
+}
+
+// GetId returns journalCreateJournalCreateJournalCreatePayloadJournal.Id, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetId() string { return v.Id }
+
+// GetJournalId returns journalCreateJournalCreateJournalCreatePayloadJournal.JournalId, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetJournalId() string {
+	return v.JournalId
+}
+
+// GetName returns journalCreateJournalCreateJournalCreatePayloadJournal.Name, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetName() string { return v.Name }
+
+// GetExternalId returns journalCreateJournalCreateJournalCreatePayloadJournal.ExternalId, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetExternalId() *string {
+	return v.ExternalId
+}
+
+// GetStatus returns journalCreateJournalCreateJournalCreatePayloadJournal.Status, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetStatus() Status { return v.Status }
+
+// GetDescription returns journalCreateJournalCreateJournalCreatePayloadJournal.Description, and is useful for accessing the field via an interface.
+func (v *journalCreateJournalCreateJournalCreatePayloadJournal) GetDescription() *string {
+	return v.Description
+}
+
+// journalCreateResponse is returned by journalCreate on success.
+type journalCreateResponse struct {
+	JournalCreate journalCreateJournalCreateJournalCreatePayload `json:"journalCreate"`
+}
+
+// GetJournalCreate returns journalCreateResponse.JournalCreate, and is useful for accessing the field via an interface.
+func (v *journalCreateResponse) GetJournalCreate() journalCreateJournalCreateJournalCreatePayload {
+	return v.JournalCreate
+}
+
 // The query or mutation executed by accountCreate.
 const accountCreate_Operation = `
 mutation accountCreate ($input: AccountCreateInput!) {
@@ -170,6 +255,48 @@ func accountCreate(
 	var err_ error
 
 	var data_ accountCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by journalCreate.
+const journalCreate_Operation = `
+mutation journalCreate ($input: JournalCreateInput!) {
+	journalCreate(input: $input) {
+		journal {
+			id
+			journalId
+			name
+			externalId
+			status
+			description
+		}
+	}
+}
+`
+
+func journalCreate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	input JournalCreateInput,
+) (*journalCreateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "journalCreate",
+		Query:  journalCreate_Operation,
+		Variables: &__journalCreateInput{
+			Input: input,
+		},
+	}
+	var err_ error
+
+	var data_ journalCreateResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

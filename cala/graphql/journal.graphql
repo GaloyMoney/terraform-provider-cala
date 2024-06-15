@@ -1,0 +1,14 @@
+mutation journalCreate($input: JournalCreateInput!) {
+  journalCreate(
+    input: $input
+  ) {
+    journal {
+      id
+      journalId
+      name
+      externalId
+      status
+      description
+    }
+  }
+}
