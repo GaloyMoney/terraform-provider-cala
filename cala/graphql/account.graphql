@@ -5,7 +5,9 @@ query accountGet($id: UUID!){
     description
     status
     metadata
+    code
     normalBalanceType
+    externalId
   }
 }
 

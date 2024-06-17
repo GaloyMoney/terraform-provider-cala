@@ -161,6 +161,10 @@ func (r *AccountResource) Read(ctx context.Context, req resource.ReadRequest, re
 	data.AccountId = types.StringValue(account.AccountId)
 	data.Description = types.StringPointerValue(account.Description)
 	data.Name = types.StringValue(account.Name)
+	data.Code = types.StringValue(account.Code)
+	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
+	data.Status = types.StringValue(string(account.Status))
+	data.ExternalId = types.StringPointerValue(account.ExternalId)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }

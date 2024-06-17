@@ -213,7 +213,9 @@ type accountGetAccount struct {
 	Description       *string          `json:"description"`
 	Status            Status           `json:"status"`
 	Metadata          *json.RawMessage `json:"metadata"`
+	Code              string           `json:"code"`
 	NormalBalanceType DebitOrCredit    `json:"normalBalanceType"`
+	ExternalId        *string          `json:"externalId"`
 }
 
 // GetAccountId returns accountGetAccount.AccountId, and is useful for accessing the field via an interface.
@@ -231,8 +233,14 @@ func (v *accountGetAccount) GetStatus() Status { return v.Status }
 // GetMetadata returns accountGetAccount.Metadata, and is useful for accessing the field via an interface.
 func (v *accountGetAccount) GetMetadata() *json.RawMessage { return v.Metadata }
 
+// GetCode returns accountGetAccount.Code, and is useful for accessing the field via an interface.
+func (v *accountGetAccount) GetCode() string { return v.Code }
+
 // GetNormalBalanceType returns accountGetAccount.NormalBalanceType, and is useful for accessing the field via an interface.
 func (v *accountGetAccount) GetNormalBalanceType() DebitOrCredit { return v.NormalBalanceType }
+
+// GetExternalId returns accountGetAccount.ExternalId, and is useful for accessing the field via an interface.
+func (v *accountGetAccount) GetExternalId() *string { return v.ExternalId }
 
 // accountGetResponse is returned by accountGet on success.
 type accountGetResponse struct {
@@ -399,7 +407,9 @@ query accountGet ($id: UUID!) {
 		description
 		status
 		metadata
+		code
 		normalBalanceType
+		externalId
 	}
 }
 `
