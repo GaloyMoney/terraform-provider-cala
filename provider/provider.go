@@ -94,6 +94,7 @@ func (p *CalaProvider) Resources(ctx context.Context) []func() resource.Resource
 		NewJournalResource,
 		NewAccountSetResource,
 		NewAccountSetMemberAccountResource,
+		NewBitfinexIntegrationResource,
 	}
 }
 

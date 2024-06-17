@@ -18,6 +18,10 @@ module "account_set_member_account" {
   source = "./resources/cala_account_set_member_account"
 }
 
+module "bitfinex_integration" {
+  source = "./resources/cala_bitfinex_integration"
+}
+
 terraform {
   required_providers {
     cala = {

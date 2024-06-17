@@ -75,6 +75,33 @@ func (v *AccountSetCreateInput) GetDescription() *string { return v.Description 
 // GetMetadata returns AccountSetCreateInput.Metadata, and is useful for accessing the field via an interface.
 func (v *AccountSetCreateInput) GetMetadata() *json.RawMessage { return v.Metadata }
 
+type BfxIntegrationCreateInput struct {
+	IntegrationId string  `json:"integrationId"`
+	Name          string  `json:"name"`
+	Description   *string `json:"description"`
+	JournalId     string  `json:"journalId"`
+	Key           string  `json:"key"`
+	Secret        string  `json:"secret"`
+}
+
+// GetIntegrationId returns BfxIntegrationCreateInput.IntegrationId, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetIntegrationId() string { return v.IntegrationId }
+
+// GetName returns BfxIntegrationCreateInput.Name, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetName() string { return v.Name }
+
+// GetDescription returns BfxIntegrationCreateInput.Description, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetDescription() *string { return v.Description }
+
+// GetJournalId returns BfxIntegrationCreateInput.JournalId, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetJournalId() string { return v.JournalId }
+
+// GetKey returns BfxIntegrationCreateInput.Key, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetKey() string { return v.Key }
+
+// GetSecret returns BfxIntegrationCreateInput.Secret, and is useful for accessing the field via an interface.
+func (v *BfxIntegrationCreateInput) GetSecret() string { return v.Secret }
+
 type DebitOrCredit string
 
 const (
@@ -143,6 +170,22 @@ func (v *__accountSetMemberAccountCreateInput) GetAccountSetId() string { return
 
 // GetAccountId returns __accountSetMemberAccountCreateInput.AccountId, and is useful for accessing the field via an interface.
 func (v *__accountSetMemberAccountCreateInput) GetAccountId() string { return v.AccountId }
+
+// __bfxIntegrationCreateInput is used internally by genqlient
+type __bfxIntegrationCreateInput struct {
+	Input BfxIntegrationCreateInput `json:"input"`
+}
+
+// GetInput returns __bfxIntegrationCreateInput.Input, and is useful for accessing the field via an interface.
+func (v *__bfxIntegrationCreateInput) GetInput() BfxIntegrationCreateInput { return v.Input }
+
+// __bfxIntegrationGetInput is used internally by genqlient
+type __bfxIntegrationGetInput struct {
+	Id string `json:"id"`
+}
+
+// GetId returns __bfxIntegrationGetInput.Id, and is useful for accessing the field via an interface.
+func (v *__bfxIntegrationGetInput) GetId() string { return v.Id }
 
 // __journalCreateInput is used internally by genqlient
 type __journalCreateInput struct {
@@ -377,6 +420,112 @@ func (v *accountSetMemberAccountCreateResponse) GetAddToAccountSet() accountSetM
 	return v.AddToAccountSet
 }
 
+// bfxIntegrationCreateBitfinexBitfinexMutation includes the requested fields of the GraphQL type BitfinexMutation.
+type bfxIntegrationCreateBitfinexBitfinexMutation struct {
+	IntegrationCreate bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload `json:"integrationCreate"`
+}
+
+// GetIntegrationCreate returns bfxIntegrationCreateBitfinexBitfinexMutation.IntegrationCreate, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutation) GetIntegrationCreate() bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload {
+	return v.IntegrationCreate
+}
+
+// bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload includes the requested fields of the GraphQL type BfxIntegrationCreatePayload.
+type bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload struct {
+	Integration bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration `json:"integration"`
+}
+
+// GetIntegration returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload.Integration, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayload) GetIntegration() bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration {
+	return v.Integration
+}
+
+// bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration includes the requested fields of the GraphQL type BfxIntegration.
+type bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration struct {
+	IntegrationId       string  `json:"integrationId"`
+	Name                string  `json:"name"`
+	Description         *string `json:"description"`
+	OmnibusAccountSetId string  `json:"omnibusAccountSetId"`
+}
+
+// GetIntegrationId returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.IntegrationId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetIntegrationId() string {
+	return v.IntegrationId
+}
+
+// GetName returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.Name, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetName() string {
+	return v.Name
+}
+
+// GetDescription returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.Description, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetDescription() *string {
+	return v.Description
+}
+
+// GetOmnibusAccountSetId returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.OmnibusAccountSetId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetOmnibusAccountSetId() string {
+	return v.OmnibusAccountSetId
+}
+
+// bfxIntegrationCreateResponse is returned by bfxIntegrationCreate on success.
+type bfxIntegrationCreateResponse struct {
+	Bitfinex bfxIntegrationCreateBitfinexBitfinexMutation `json:"bitfinex"`
+}
+
+// GetBitfinex returns bfxIntegrationCreateResponse.Bitfinex, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateResponse) GetBitfinex() bfxIntegrationCreateBitfinexBitfinexMutation {
+	return v.Bitfinex
+}
+
+// bfxIntegrationGetBitfinexBitfinexQuery includes the requested fields of the GraphQL type BitfinexQuery.
+type bfxIntegrationGetBitfinexBitfinexQuery struct {
+	Integration *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration `json:"integration"`
+}
+
+// GetIntegration returns bfxIntegrationGetBitfinexBitfinexQuery.Integration, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQuery) GetIntegration() *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration {
+	return v.Integration
+}
+
+// bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration includes the requested fields of the GraphQL type BfxIntegration.
+type bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration struct {
+	IntegrationId       string  `json:"integrationId"`
+	Name                string  `json:"name"`
+	Description         *string `json:"description"`
+	OmnibusAccountSetId string  `json:"omnibusAccountSetId"`
+}
+
+// GetIntegrationId returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.IntegrationId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetIntegrationId() string {
+	return v.IntegrationId
+}
+
+// GetName returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.Name, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetName() string {
+	return v.Name
+}
+
+// GetDescription returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.Description, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetDescription() *string {
+	return v.Description
+}
+
+// GetOmnibusAccountSetId returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.OmnibusAccountSetId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetOmnibusAccountSetId() string {
+	return v.OmnibusAccountSetId
+}
+
+// bfxIntegrationGetResponse is returned by bfxIntegrationGet on success.
+type bfxIntegrationGetResponse struct {
+	Bitfinex bfxIntegrationGetBitfinexBitfinexQuery `json:"bitfinex"`
+}
+
+// GetBitfinex returns bfxIntegrationGetResponse.Bitfinex, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetResponse) GetBitfinex() bfxIntegrationGetBitfinexBitfinexQuery {
+	return v.Bitfinex
+}
+
 // journalCreateJournalCreateJournalCreatePayload includes the requested fields of the GraphQL type JournalCreatePayload.
 type journalCreateJournalCreateJournalCreatePayload struct {
 	Journal journalCreateJournalCreateJournalCreatePayloadJournal `json:"journal"`
@@ -582,6 +731,88 @@ func accountSetMemberAccountCreate(
 	var err_ error
 
 	var data_ accountSetMemberAccountCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by bfxIntegrationCreate.
+const bfxIntegrationCreate_Operation = `
+mutation bfxIntegrationCreate ($input: BfxIntegrationCreateInput!) {
+	bitfinex {
+		integrationCreate(input: $input) {
+			integration {
+				integrationId
+				name
+				description
+				omnibusAccountSetId
+			}
+		}
+	}
+}
+`
+
+func bfxIntegrationCreate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	input BfxIntegrationCreateInput,
+) (*bfxIntegrationCreateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "bfxIntegrationCreate",
+		Query:  bfxIntegrationCreate_Operation,
+		Variables: &__bfxIntegrationCreateInput{
+			Input: input,
+		},
+	}
+	var err_ error
+
+	var data_ bfxIntegrationCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by bfxIntegrationGet.
+const bfxIntegrationGet_Operation = `
+query bfxIntegrationGet ($id: UUID!) {
+	bitfinex {
+		integration(id: $id) {
+			integrationId
+			name
+			description
+			omnibusAccountSetId
+		}
+	}
+}
+`
+
+func bfxIntegrationGet(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	id string,
+) (*bfxIntegrationGetResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "bfxIntegrationGet",
+		Query:  bfxIntegrationGet_Operation,
+		Variables: &__bfxIntegrationGetInput{
+			Id: id,
+		},
+	}
+	var err_ error
+
+	var data_ bfxIntegrationGetResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

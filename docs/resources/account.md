@@ -13,7 +13,7 @@ Cala account.
 ## Example Usage
 
 ```terraform
-resource "random_uuid" "alice_account_id" { }
+resource "random_uuid" "alice_account_id" {}
 
 resource "cala_account" "alice" {
   id   = random_uuid.alice_account_id.result

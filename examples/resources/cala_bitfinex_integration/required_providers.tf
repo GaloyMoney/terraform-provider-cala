@@ -5,3 +5,7 @@ terraform {
     }
   }
 }
+
+provider "cala" {
+  endpoint = "http://localhost:2252/graphql"
+}

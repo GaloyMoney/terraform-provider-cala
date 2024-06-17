@@ -1,0 +1,25 @@
+query bfxIntegrationGet($id: UUID!){
+  bitfinex {
+    integration(id: $id) {
+      integrationId
+      name
+      description
+      omnibusAccountSetId
+    }
+  }
+}
+
+mutation bfxIntegrationCreate($input: BfxIntegrationCreateInput!) {
+  bitfinex {
+    integrationCreate(
+      input: $input
+    ) {
+      integration {
+        integrationId
+        name
+        description
+        omnibusAccountSetId
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ Cala journal.
 ## Example Usage
 
 ```terraform
-resource "random_uuid" "journal_id" { }
+resource "random_uuid" "journal_id" {}
 
 resource "cala_journal" "journal" {
   id   = random_uuid.journal_id.result
