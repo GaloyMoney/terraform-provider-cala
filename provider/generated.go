@@ -159,6 +159,14 @@ type __accountSetCreateInput struct {
 // GetInput returns __accountSetCreateInput.Input, and is useful for accessing the field via an interface.
 func (v *__accountSetCreateInput) GetInput() AccountSetCreateInput { return v.Input }
 
+// __accountSetGetInput is used internally by genqlient
+type __accountSetGetInput struct {
+	Id string `json:"id"`
+}
+
+// GetId returns __accountSetGetInput.Id, and is useful for accessing the field via an interface.
+func (v *__accountSetGetInput) GetId() string { return v.Id }
+
 // __accountSetMemberAccountCreateInput is used internally by genqlient
 type __accountSetMemberAccountCreateInput struct {
 	AccountSetId string `json:"accountSetId"`
@@ -403,6 +411,38 @@ type accountSetCreateResponse struct {
 func (v *accountSetCreateResponse) GetAccountSetCreate() accountSetCreateAccountSetCreateAccountSetCreatePayload {
 	return v.AccountSetCreate
 }
+
+// accountSetGetAccountSet includes the requested fields of the GraphQL type AccountSet.
+type accountSetGetAccountSet struct {
+	AccountSetId      string        `json:"accountSetId"`
+	JournalId         string        `json:"journalId"`
+	Name              string        `json:"name"`
+	Description       *string       `json:"description"`
+	NormalBalanceType DebitOrCredit `json:"normalBalanceType"`
+}
+
+// GetAccountSetId returns accountSetGetAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetAccountSetId() string { return v.AccountSetId }
+
+// GetJournalId returns accountSetGetAccountSet.JournalId, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetJournalId() string { return v.JournalId }
+
+// GetName returns accountSetGetAccountSet.Name, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetName() string { return v.Name }
+
+// GetDescription returns accountSetGetAccountSet.Description, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetDescription() *string { return v.Description }
+
+// GetNormalBalanceType returns accountSetGetAccountSet.NormalBalanceType, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetNormalBalanceType() DebitOrCredit { return v.NormalBalanceType }
+
+// accountSetGetResponse is returned by accountSetGet on success.
+type accountSetGetResponse struct {
+	AccountSet *accountSetGetAccountSet `json:"accountSet"`
+}
+
+// GetAccountSet returns accountSetGetResponse.AccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetGetResponse) GetAccountSet() *accountSetGetAccountSet { return v.AccountSet }
 
 // accountSetMemberAccountCreateAddToAccountSetAddToAccountSetPayload includes the requested fields of the GraphQL type AddToAccountSetPayload.
 type accountSetMemberAccountCreateAddToAccountSetAddToAccountSetPayload struct {
@@ -736,6 +776,45 @@ func accountSetCreate(
 	var err_ error
 
 	var data_ accountSetCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by accountSetGet.
+const accountSetGet_Operation = `
+query accountSetGet ($id: UUID!) {
+	accountSet(id: $id) {
+		accountSetId
+		journalId
+		name
+		description
+		normalBalanceType
+	}
+}
+`
+
+func accountSetGet(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	id string,
+) (*accountSetGetResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "accountSetGet",
+		Query:  accountSetGet_Operation,
+		Variables: &__accountSetGetInput{
+			Id: id,
+		},
+	}
+	var err_ error
+
+	var data_ accountSetGetResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(
