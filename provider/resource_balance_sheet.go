@@ -54,58 +54,72 @@ func (r *BalanceSheetResource) Schema(ctx context.Context, req resource.SchemaRe
 			"assets_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for assets.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"liabilities_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for liabilities.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule1_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 1.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule2_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 2.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule3_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 3.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule4_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 4.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule5_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 5.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule6_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 6.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule7_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 7.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule8_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 8.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule9_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 9.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule10_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 10.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule11_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 11.",
 				Optional:            true,
+				Computed: 					true,
 			},
 			"schedule12_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 12.",
 				Optional:            true,
+				Computed: 					true,
 			},
 		},
 	}
@@ -175,12 +189,29 @@ func (r *BalanceSheetResource) Create(ctx context.Context, req resource.CreateRe
 	}
 
 	// Create the balance sheet
-	_, err := balanceSheetCreate(ctx, *r.client, input)
+	response, err := balanceSheetCreate(ctx, *r.client, input)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Failed to create balance sheet", err.Error())
 		return
 	}
+
+	balanceSheet := response.BalanceSheet.Create.BalanceSheet
+
+	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.Id)
+	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.Id)
+	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.Id)
+	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.Id)
+	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.Id)
+	data.Schedule4AccountSetId = types.StringValue(balanceSheet.Schedule4.Id)
+	data.Schedule5AccountSetId = types.StringValue(balanceSheet.Schedule5.Id)
+	data.Schedule6AccountSetId = types.StringValue(balanceSheet.Schedule6.Id)
+	data.Schedule7AccountSetId = types.StringValue(balanceSheet.Schedule7.Id)
+	data.Schedule8AccountSetId = types.StringValue(balanceSheet.Schedule8.Id)
+	data.Schedule9AccountSetId = types.StringValue(balanceSheet.Schedule9.Id)
+	data.Schedule10AccountSetId = types.StringValue(balanceSheet.Schedule10.Id)
+	data.Schedule11AccountSetId = types.StringValue(balanceSheet.Schedule11.Id)
+	data.Schedule12AccountSetId = types.StringValue(balanceSheet.Schedule12.Id)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
