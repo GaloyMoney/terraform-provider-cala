@@ -175,6 +175,148 @@ type BalanceAmount {
 	entryId: UUID!
 }
 
+type BalanceSheet {
+	assets: AccountSet!
+	liabilities: AccountSet!
+	schedule1: AccountSet!
+	schedule2: AccountSet!
+	schedule3: AccountSet!
+	schedule4: AccountSet!
+	schedule5: AccountSet!
+	schedule6: AccountSet!
+	schedule7: AccountSet!
+	schedule8: AccountSet!
+	schedule9: AccountSet!
+	schedule10: AccountSet!
+	schedule11: AccountSet!
+	schedule12: AccountSet!
+}
+
+input BalanceSheetCreateInput {
+	journalId: UUID!
+}
+
+type BalanceSheetCreatePayload {
+	balanceSheet: BalanceSheet!
+}
+
+type BalanceSheetMutation {
+	create(input: BalanceSheetCreateInput!): BalanceSheetCreatePayload!
+}
+
+type BalanceSheetQuery {
+	byJournalId(journalId: UUID!): BalanceSheet
+}
+
+type BfxAddressBackedAccount {
+	address: String!
+	account: Account!
+}
+
+input BfxAddressBackedAccountCreateInput {
+	integrationId: UUID!
+	type: BfxAddressType!
+	depositCreditAccountId: UUID!
+	accountId: UUID!
+	name: String!
+	code: String!
+	accountSetIds: [UUID!]
+}
+
+type BfxAddressBackedAccountCreatePayload {
+	account: BfxAddressBackedAccount!
+}
+
+enum BfxAddressType {
+	BTC
+	TRX
+}
+
+type BfxIntegration {
+	integrationId: UUID!
+	name: String!
+	description: String
+	journalId: UUID!
+	omnibusAccountSetId: UUID!
+	withdrawalAccountId: UUID!
+	omnibusAccountSet: AccountSet!
+	withdrawalAccount: Account!
+}
+
+input BfxIntegrationCreateInput {
+	integrationId: UUID!
+	name: String!
+	description: String
+	journalId: UUID!
+	key: String!
+	secret: String!
+}
+
+type BfxIntegrationCreatePayload {
+	integration: BfxIntegration!
+}
+
+type BfxSimulation {
+	deposit(depositAddress: String!, amount: Decimal!, currency: String!): Boolean!
+}
+
+type BfxWithdrawal {
+	withdrawalId: UUID!
+	integrationId: UUID!
+	reserveTransactionId: UUID!
+	integration: BfxIntegration!
+	reserveTransaction: Transaction!
+}
+
+input BfxWithdrawalExecuteInput {
+	withdrawalId: UUID!
+	integrationId: UUID!
+	amount: Decimal!
+	withdrawalMethod: BfxWithdrawalMethod!
+	destinationAddress: String!
+	debitAccountId: UUID!
+	reserveTxExternalId: String
+}
+
+type BfxWithdrawalExecutePayload {
+	withdrawal: BfxWithdrawal!
+}
+
+enum BfxWithdrawalMethod {
+	BITCOIN
+	TETHER_USX
+}
+
+type BigQueryExportCreatePayload {
+	job: Job!
+}
+
+input BigQueryExportJobCreateInput {
+	jobId: UUID!
+	name: String!
+	description: String
+	gcpProjectId: String!
+	gcpDatasetId: String!
+	serviceAccountCredsBase64: String!
+}
+
+type BigQueryMutation {
+	bqExportJobCreate(input: BigQueryExportJobCreateInput!): BigQueryExportCreatePayload!
+}
+
+type BitfinexMutation {
+	integrationCreate(input: BfxIntegrationCreateInput!): BfxIntegrationCreatePayload!
+	addressBackedAccountCreate(input: BfxAddressBackedAccountCreateInput!): BfxAddressBackedAccountCreatePayload!
+	withdrawalExecute(input: BfxWithdrawalExecuteInput!): BfxWithdrawalExecutePayload!
+	simulate: BfxSimulation!
+}
+
+type BitfinexQuery {
+	integration(id: UUID!): BfxIntegration
+	addressBackedAccount(id: UUID!): BfxAddressBackedAccount
+	withdrawal(id: UUID!): BfxWithdrawal
+}
+
 
 input CalaOutboxImportJobCreateInput {
 	jobId: UUID!
@@ -290,11 +432,15 @@ type Money {
 
 type Mutation {
 	calaOutboxImportJobCreate(input: CalaOutboxImportJobCreateInput!): CalaOutboxImportJobCreatePayload!
+	bigQuery: BigQueryMutation!
+	bitfinex: BitfinexMutation!
+	balanceSheet: BalanceSheetMutation!
 	accountCreate(input: AccountCreateInput!): AccountCreatePayload!
 	accountUpdate(id: UUID!, input: AccountUpdateInput!): AccountUpdatePayload!
 	accountSetCreate(input: AccountSetCreateInput!): AccountSetCreatePayload!
 	accountSetUpdate(id: UUID!, input: AccountSetUpdateInput!): AccountSetUpdatePayload!
 	addToAccountSet(input: AddToAccountSetInput!): AddToAccountSetPayload!
+	removeFromAccountSet(input: RemoveFromAccountSetInput!): RemoveFromAccountSetPayload!
 	journalCreate(input: JournalCreateInput!): JournalCreatePayload!
 	journalUpdate(id: UUID!, input: JournalUpdateInput!): JournalUpdatePayload!
 	txTemplateCreate(input: TxTemplateCreateInput!): TxTemplateCreatePayload!
@@ -354,6 +500,8 @@ type PostTransactionPayload {
 
 type Query {
 	serverVersion: String!
+	bitfinex: BitfinexQuery!
+	balanceSheet: BalanceSheetQuery!
 	account(id: UUID!): Account
 	accountByExternalId(externalId: String!): Account
 	accountByCode(code: String!): Account
@@ -366,6 +514,16 @@ type Query {
 	txTemplate(id: UUID!): TxTemplate
 	txTemplateByCode(code: String!): TxTemplate
 	jobs(first: Int!, after: String): JobConnection!
+}
+
+input RemoveFromAccountSetInput {
+	accountSetId: UUID!
+	memberId: UUID!
+	memberType: AccountSetMemberType!
+}
+
+type RemoveFromAccountSetPayload {
+	accountSet: AccountSet!
 }
 
 enum Status {
