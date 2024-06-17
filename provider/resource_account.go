@@ -59,7 +59,7 @@ func (r *AccountResource) Schema(ctx context.Context, req resource.SchemaRequest
 			},
 			"normal_balance_type": schema.StringAttribute{
 				MarkdownDescription: "normalBalanceType",
-				Default:             stringdefault.StaticString("CREDIT"),
+				Optional:            true,
 				Computed:            true,
 			},
 			"status": schema.StringAttribute{
