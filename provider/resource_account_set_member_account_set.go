@@ -89,9 +89,11 @@ func (r *AccountSetMemberAccountSetResource) Create(ctx context.Context, req res
 		return
 	}
 
-	tflog.Trace(ctx, "Created an account set member account set")
+	tflog.Trace(ctx, "Added an account set to an account set")
 
-	data.AccountSetMemberId = types.StringValue(fmt.Sprintf("account_set/%s/account_set/%s", data.AccountSetId.ValueString(), data.MemberAccountSetId.ValueString()))
+  data.AccountSetMemberId = types.StringValue(fmt.Sprintf("account_set/%s/member_account_set/%s", data.AccountSetId.ValueString(), data.MemberAccountSetId.ValueString()))
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountSetMemberAccountSetResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
