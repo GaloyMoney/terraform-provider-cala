@@ -1,0 +1,13 @@
+mutation accountSetMemberAccountCreate($accountSetId: UUID!, $accountId: UUID!) {
+  addToAccountSet(
+    input: {
+      accountSetId: $accountSetId
+      memberId: $accountId
+      memberType: ACCOUNT
+    }
+  ) {
+    accountSet {
+      accountSetId
+    }
+  }
+}

@@ -1,7 +1,7 @@
 BIN_OUT_DIR := out
 BINARY := $(BIN_OUT_DIR)/terraform-provider-cala
 
-version = 0.0.11
+version = 0.0.12
 os_arch = $(shell go env GOOS)_$(shell go env GOARCH)
 provider_path = registry.terraform.io/galoymoney/cala/$(version)/$(os_arch)/
 

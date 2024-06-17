@@ -93,6 +93,7 @@ func (p *CalaProvider) Resources(ctx context.Context) []func() resource.Resource
 		NewAccountResource,
 		NewJournalResource,
 		NewAccountSetResource,
+		NewAccountSetMemberAccountResource,
 	}
 }
 

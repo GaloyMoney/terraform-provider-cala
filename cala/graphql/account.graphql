@@ -8,6 +8,11 @@ query accountGet($id: UUID!){
     code
     normalBalanceType
     externalId
+    sets(first: 10) {
+      nodes {
+        accountSetId
+      }
+    }
   }
 }
 
