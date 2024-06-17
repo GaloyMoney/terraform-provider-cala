@@ -171,6 +171,20 @@ func (v *__accountSetMemberAccountCreateInput) GetAccountSetId() string { return
 // GetAccountId returns __accountSetMemberAccountCreateInput.AccountId, and is useful for accessing the field via an interface.
 func (v *__accountSetMemberAccountCreateInput) GetAccountId() string { return v.AccountId }
 
+// __accountSetMemberAccountSetCreateInput is used internally by genqlient
+type __accountSetMemberAccountSetCreateInput struct {
+	AccountSetId       string `json:"accountSetId"`
+	MemberAccountSetId string `json:"memberAccountSetId"`
+}
+
+// GetAccountSetId returns __accountSetMemberAccountSetCreateInput.AccountSetId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountSetCreateInput) GetAccountSetId() string { return v.AccountSetId }
+
+// GetMemberAccountSetId returns __accountSetMemberAccountSetCreateInput.MemberAccountSetId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountSetCreateInput) GetMemberAccountSetId() string {
+	return v.MemberAccountSetId
+}
+
 // __bfxIntegrationCreateInput is used internally by genqlient
 type __bfxIntegrationCreateInput struct {
 	Input BfxIntegrationCreateInput `json:"input"`
@@ -417,6 +431,36 @@ type accountSetMemberAccountCreateResponse struct {
 
 // GetAddToAccountSet returns accountSetMemberAccountCreateResponse.AddToAccountSet, and is useful for accessing the field via an interface.
 func (v *accountSetMemberAccountCreateResponse) GetAddToAccountSet() accountSetMemberAccountCreateAddToAccountSetAddToAccountSetPayload {
+	return v.AddToAccountSet
+}
+
+// accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload includes the requested fields of the GraphQL type AddToAccountSetPayload.
+type accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload struct {
+	AccountSet accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet `json:"accountSet"`
+}
+
+// GetAccountSet returns accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload.AccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload) GetAccountSet() accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet {
+	return v.AccountSet
+}
+
+// accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet includes the requested fields of the GraphQL type AccountSet.
+type accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
+
+// accountSetMemberAccountSetCreateResponse is returned by accountSetMemberAccountSetCreate on success.
+type accountSetMemberAccountSetCreateResponse struct {
+	AddToAccountSet accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload `json:"addToAccountSet"`
+}
+
+// GetAddToAccountSet returns accountSetMemberAccountSetCreateResponse.AddToAccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetCreateResponse) GetAddToAccountSet() accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload {
 	return v.AddToAccountSet
 }
 
@@ -731,6 +775,45 @@ func accountSetMemberAccountCreate(
 	var err_ error
 
 	var data_ accountSetMemberAccountCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by accountSetMemberAccountSetCreate.
+const accountSetMemberAccountSetCreate_Operation = `
+mutation accountSetMemberAccountSetCreate ($accountSetId: UUID!, $memberAccountSetId: UUID!) {
+	addToAccountSet(input: {accountSetId:$accountSetId,memberId:$memberAccountSetId,memberType:ACCOUNT_SET}) {
+		accountSet {
+			accountSetId
+		}
+	}
+}
+`
+
+func accountSetMemberAccountSetCreate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	accountSetId string,
+	memberAccountSetId string,
+) (*accountSetMemberAccountSetCreateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "accountSetMemberAccountSetCreate",
+		Query:  accountSetMemberAccountSetCreate_Operation,
+		Variables: &__accountSetMemberAccountSetCreateInput{
+			AccountSetId:       accountSetId,
+			MemberAccountSetId: memberAccountSetId,
+		},
+	}
+	var err_ error
+
+	var data_ accountSetMemberAccountSetCreateResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(
