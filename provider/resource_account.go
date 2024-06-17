@@ -145,7 +145,24 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 }
 
 func (r *AccountResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *AccountResourceModel
 
+	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
+
+	response, err := accountGet(ctx, *r.client, data.AccountId.ValueString())
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read account, got error: %s", err))
+		return
+	}
+
+	account := response.Account
+
+	data.AccountId = types.StringValue(account.AccountId)
+	data.Description = types.StringPointerValue(account.Description)
+	data.Name = types.StringValue(account.Name)
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {

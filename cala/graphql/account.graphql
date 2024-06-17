@@ -1,3 +1,14 @@
+query accountGet($id: UUID!){
+  account(id: $id) {
+    accountId
+    name
+    description
+    status
+    metadata
+    normalBalanceType
+  }
+}
+
 mutation accountCreate($input: AccountCreateInput!) {
   accountCreate(
     input: $input
