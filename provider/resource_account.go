@@ -140,6 +140,10 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 	data.AccountId = types.StringValue(account.AccountId)
 	data.Name = types.StringValue(account.Name)
 	data.Code = types.StringValue(account.Code)
+	data.Description = types.StringPointerValue(account.Description)
+	data.ExternalId = types.StringPointerValue(account.ExternalId)
+	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
+	data.Status = types.StringValue(string(account.Status))
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
