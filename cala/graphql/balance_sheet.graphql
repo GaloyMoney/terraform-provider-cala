@@ -1,0 +1,50 @@
+mutation BalanceSheet($input: BalanceSheetCreateInput!) {
+  balanceSheet {
+    create(input: $input) {
+      balanceSheet {
+        assets {
+          id
+        }
+        liabilities {
+          id
+        }
+        schedule1 {
+          id
+        }
+        schedule2 {
+          id
+        }
+        schedule3 {
+          id
+        }
+        schedule4 {
+          id
+        }
+        schedule5 {
+          id
+        }
+        schedule6 {
+          id
+        }
+        schedule7 {
+          id
+        }
+        schedule8 {
+          id
+        }
+        schedule9 {
+          id
+        }
+        schedule10 {
+          id
+        }
+        schedule11 {
+          id
+        }
+        schedule12 {
+          id
+        }
+      }
+    }
+  }
+}
