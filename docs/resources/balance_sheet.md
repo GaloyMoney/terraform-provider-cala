@@ -32,7 +32,7 @@ resource "cala_balance_sheet" "balance_sheet" {
 
 - `id` (String) ID of the journal associated with the balance sheet.
 
-### Optional
+### Read-Only
 
 - `assets_account_set_id` (String) ID of the account set for assets.
 - `liabilities_account_set_id` (String) ID of the account set for liabilities.
