@@ -22,7 +22,7 @@ type BalanceSheetResource struct {
 }
 
 type BalanceSheetResourceModel struct {
-	JournalId               types.String `tfsdk:"id"`
+	JournalId               types.String `tfsdk:"journal_id"`
 	AssetsAccountSetId      types.String `tfsdk:"assets_account_set_id"`
 	LiabilitiesAccountSetId types.String `tfsdk:"liabilities_account_set_id"`
 	Schedule1AccountSetId   types.String `tfsdk:"schedule1_account_set_id"`
@@ -47,7 +47,7 @@ func (r *BalanceSheetResource) Schema(ctx context.Context, req resource.SchemaRe
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "Cala balance sheet.",
 		Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
+			"journal_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the journal associated with the balance sheet.",
 				Required:            true,
 			},
