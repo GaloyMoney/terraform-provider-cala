@@ -12,3 +12,13 @@ mutation accountSetCreate($input: AccountSetCreateInput!) {
     }
   }
 }
+
+query accountSetGet($id: UUID!) {
+  accountSet(id: $id) {
+    accountSetId
+    journalId
+    name
+    description
+    normalBalanceType
+  }
+}

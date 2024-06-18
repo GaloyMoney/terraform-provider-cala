@@ -11,3 +11,17 @@ mutation accountSetMemberAccountCreate($accountSetId: UUID!, $accountId: UUID!) 
     }
   }
 }
+
+mutation accountSetMemberAccountSetCreate($accountSetId: UUID!, $memberAccountSetId: UUID!) {
+  addToAccountSet(
+    input: {
+      accountSetId: $accountSetId
+      memberId: $memberAccountSetId
+      memberType: ACCOUNT_SET
+    }
+  ) {
+    accountSet {
+      accountSetId
+    }
+  }
+}

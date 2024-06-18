@@ -84,7 +84,7 @@ func (r *AccountSetMemberAccountResource) Create(ctx context.Context, req resour
 	_, err := accountSetMemberAccountCreate(ctx, *r.client, data.AccountSetId.ValueString(), data.MemberAccountId.ValueString())
 
 	if err != nil {
-		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create account, got error: %s", err))
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create account set member, got error: %s", err))
 		return
 	}
 
