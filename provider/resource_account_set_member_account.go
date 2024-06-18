@@ -129,7 +129,18 @@ func (r *AccountSetMemberAccountResource) Update(ctx context.Context, req resour
 }
 
 func (r *AccountSetMemberAccountResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *AccountSetMemberAccountResourceModel
 
+	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
+
+	_, err := accountSetMemberAccountRemove(ctx, *r.client, data.AccountSetId.ValueString(), data.MemberAccountId.ValueString())
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to delete account set member, got error: %s", err))
+		return
+	}
+
+	tflog.Trace(ctx, "Removed an account from an account set")
 }
 
 func (r *AccountSetMemberAccountResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
