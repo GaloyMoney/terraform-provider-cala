@@ -2,46 +2,46 @@ query balanceSheetGet($journalId: UUID!) {
   balanceSheet {
     byJournalId(journalId: $journalId) {
       liabilities {
-        id
+        accountSetId
       }
       assets {
-        id
+        accountSetId
       }
       schedule1 {
-        id
+        accountSetId
       }
       schedule2 {
-        id
+        accountSetId
       }
       schedule3 {
-        id
+        accountSetId
       }
       schedule4 {
-        id
+        accountSetId
       }
       schedule5 {
-        id
+        accountSetId
       }
       schedule6 {
-        id
+        accountSetId
       }
       schedule7 {
-        id
+        accountSetId
       }
       schedule8 {
-        id
+        accountSetId
       }
       schedule9 {
-        id
+        accountSetId
       }
       schedule10 {
-        id
+        accountSetId
       }
       schedule11 {
-        id
+        accountSetId
       }
       schedule12 {
-        id
+        accountSetId
       }
     }
   }
@@ -52,46 +52,46 @@ mutation balanceSheetCreate($input: BalanceSheetCreateInput!) {
     create(input: $input) {
       balanceSheet {
         assets {
-          id
+          accountSetId
         }
         liabilities {
-          id
+          accountSetId
         }
         schedule1 {
-          id
+          accountSetId
         }
         schedule2 {
-          id
+          accountSetId
         }
         schedule3 {
-          id
+          accountSetId
         }
         schedule4 {
-          id
+          accountSetId
         }
         schedule5 {
-          id
+          accountSetId
         }
         schedule6 {
-          id
+          accountSetId
         }
         schedule7 {
-          id
+          accountSetId
         }
         schedule8 {
-          id
+          accountSetId
         }
         schedule9 {
-          id
+          accountSetId
         }
         schedule10 {
-          id
+          accountSetId
         }
         schedule11 {
-          id
+          accountSetId
         }
         schedule12 {
-          id
+          accountSetId
         }
       }
     }

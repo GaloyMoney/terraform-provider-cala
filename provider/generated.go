@@ -637,142 +637,142 @@ func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCre
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule10AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule11AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule12AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule4AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule5AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule6AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule7AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule8AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule9AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetCreateResponse is returned by balanceSheetCreate on success.
@@ -885,142 +885,142 @@ func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet) Ge
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule10AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule11AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule12AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule3AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule4AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule5AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule6AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule7AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule8AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet includes the requested fields of the GraphQL type AccountSet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet struct {
-	Id string `json:"id"`
+	AccountSetId string `json:"accountSetId"`
 }
 
-// GetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet.Id, and is useful for accessing the field via an interface.
-func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet) GetId() string {
-	return v.Id
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule9AccountSet) GetAccountSetId() string {
+	return v.AccountSetId
 }
 
 // balanceSheetGetResponse is returned by balanceSheetGet on success.
@@ -1440,46 +1440,46 @@ mutation balanceSheetCreate ($input: BalanceSheetCreateInput!) {
 		create(input: $input) {
 			balanceSheet {
 				assets {
-					id
+					accountSetId
 				}
 				liabilities {
-					id
+					accountSetId
 				}
 				schedule1 {
-					id
+					accountSetId
 				}
 				schedule2 {
-					id
+					accountSetId
 				}
 				schedule3 {
-					id
+					accountSetId
 				}
 				schedule4 {
-					id
+					accountSetId
 				}
 				schedule5 {
-					id
+					accountSetId
 				}
 				schedule6 {
-					id
+					accountSetId
 				}
 				schedule7 {
-					id
+					accountSetId
 				}
 				schedule8 {
-					id
+					accountSetId
 				}
 				schedule9 {
-					id
+					accountSetId
 				}
 				schedule10 {
-					id
+					accountSetId
 				}
 				schedule11 {
-					id
+					accountSetId
 				}
 				schedule12 {
-					id
+					accountSetId
 				}
 			}
 		}
@@ -1519,46 +1519,46 @@ query balanceSheetGet ($journalId: UUID!) {
 	balanceSheet {
 		byJournalId(journalId: $journalId) {
 			liabilities {
-				id
+				accountSetId
 			}
 			assets {
-				id
+				accountSetId
 			}
 			schedule1 {
-				id
+				accountSetId
 			}
 			schedule2 {
-				id
+				accountSetId
 			}
 			schedule3 {
-				id
+				accountSetId
 			}
 			schedule4 {
-				id
+				accountSetId
 			}
 			schedule5 {
-				id
+				accountSetId
 			}
 			schedule6 {
-				id
+				accountSetId
 			}
 			schedule7 {
-				id
+				accountSetId
 			}
 			schedule8 {
-				id
+				accountSetId
 			}
 			schedule9 {
-				id
+				accountSetId
 			}
 			schedule10 {
-				id
+				accountSetId
 			}
 			schedule11 {
-				id
+				accountSetId
 			}
 			schedule12 {
-				id
+				accountSetId
 			}
 		}
 	}

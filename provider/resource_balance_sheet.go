@@ -22,21 +22,21 @@ type BalanceSheetResource struct {
 }
 
 type BalanceSheetResourceModel struct {
-	JournalId types.String `tfsdk:"id"`
-	AssetsAccountSetId types.String `tfsdk:"assets_account_set_id"`
+	JournalId               types.String `tfsdk:"id"`
+	AssetsAccountSetId      types.String `tfsdk:"assets_account_set_id"`
 	LiabilitiesAccountSetId types.String `tfsdk:"liabilities_account_set_id"`
-	Schedule1AccountSetId types.String `tfsdk:"schedule1_account_set_id"`
-	Schedule2AccountSetId types.String `tfsdk:"schedule2_account_set_id"`
-	Schedule3AccountSetId types.String `tfsdk:"schedule3_account_set_id"`
-	Schedule4AccountSetId types.String `tfsdk:"schedule4_account_set_id"`
-	Schedule5AccountSetId types.String `tfsdk:"schedule5_account_set_id"`
-	Schedule6AccountSetId types.String `tfsdk:"schedule6_account_set_id"`
-	Schedule7AccountSetId types.String `tfsdk:"schedule7_account_set_id"`
-	Schedule8AccountSetId types.String `tfsdk:"schedule8_account_set_id"`
-	Schedule9AccountSetId types.String `tfsdk:"schedule9_account_set_id"`
-	Schedule10AccountSetId types.String `tfsdk:"schedule10_account_set_id"`
-	Schedule11AccountSetId types.String `tfsdk:"schedule11_account_set_id"`
-	Schedule12AccountSetId types.String `tfsdk:"schedule12_account_set_id"`
+	Schedule1AccountSetId   types.String `tfsdk:"schedule1_account_set_id"`
+	Schedule2AccountSetId   types.String `tfsdk:"schedule2_account_set_id"`
+	Schedule3AccountSetId   types.String `tfsdk:"schedule3_account_set_id"`
+	Schedule4AccountSetId   types.String `tfsdk:"schedule4_account_set_id"`
+	Schedule5AccountSetId   types.String `tfsdk:"schedule5_account_set_id"`
+	Schedule6AccountSetId   types.String `tfsdk:"schedule6_account_set_id"`
+	Schedule7AccountSetId   types.String `tfsdk:"schedule7_account_set_id"`
+	Schedule8AccountSetId   types.String `tfsdk:"schedule8_account_set_id"`
+	Schedule9AccountSetId   types.String `tfsdk:"schedule9_account_set_id"`
+	Schedule10AccountSetId  types.String `tfsdk:"schedule10_account_set_id"`
+	Schedule11AccountSetId  types.String `tfsdk:"schedule11_account_set_id"`
+	Schedule12AccountSetId  types.String `tfsdk:"schedule12_account_set_id"`
 }
 
 func (r *BalanceSheetResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -54,72 +54,72 @@ func (r *BalanceSheetResource) Schema(ctx context.Context, req resource.SchemaRe
 			"assets_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for assets.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"liabilities_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for liabilities.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule1_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 1.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule2_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 2.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule3_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 3.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule4_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 4.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule5_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 5.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule6_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 6.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule7_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 7.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule8_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 8.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule9_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 9.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule10_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 10.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule11_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 11.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 			"schedule12_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 12.",
 				Optional:            true,
-				Computed: 					true,
+				Computed:            true,
 			},
 		},
 	}
@@ -159,20 +159,20 @@ func (r *BalanceSheetResource) Read(ctx context.Context, req resource.ReadReques
 
 	balanceSheet := response.BalanceSheet.ByJournalId
 
-	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.Id)
-	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.Id)
-	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.Id)
-	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.Id)
-	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.Id)
-	data.Schedule4AccountSetId = types.StringValue(balanceSheet.Schedule4.Id)
-	data.Schedule5AccountSetId = types.StringValue(balanceSheet.Schedule5.Id)
-	data.Schedule6AccountSetId = types.StringValue(balanceSheet.Schedule6.Id)
-	data.Schedule7AccountSetId = types.StringValue(balanceSheet.Schedule7.Id)
-	data.Schedule8AccountSetId = types.StringValue(balanceSheet.Schedule8.Id)
-	data.Schedule9AccountSetId = types.StringValue(balanceSheet.Schedule9.Id)
-	data.Schedule10AccountSetId = types.StringValue(balanceSheet.Schedule10.Id)
-	data.Schedule11AccountSetId = types.StringValue(balanceSheet.Schedule11.Id)
-	data.Schedule12AccountSetId = types.StringValue(balanceSheet.Schedule12.Id)
+	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.AccountSetId)
+	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.AccountSetId)
+	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.AccountSetId)
+	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.AccountSetId)
+	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.AccountSetId)
+	data.Schedule4AccountSetId = types.StringValue(balanceSheet.Schedule4.AccountSetId)
+	data.Schedule5AccountSetId = types.StringValue(balanceSheet.Schedule5.AccountSetId)
+	data.Schedule6AccountSetId = types.StringValue(balanceSheet.Schedule6.AccountSetId)
+	data.Schedule7AccountSetId = types.StringValue(balanceSheet.Schedule7.AccountSetId)
+	data.Schedule8AccountSetId = types.StringValue(balanceSheet.Schedule8.AccountSetId)
+	data.Schedule9AccountSetId = types.StringValue(balanceSheet.Schedule9.AccountSetId)
+	data.Schedule10AccountSetId = types.StringValue(balanceSheet.Schedule10.AccountSetId)
+	data.Schedule11AccountSetId = types.StringValue(balanceSheet.Schedule11.AccountSetId)
+	data.Schedule12AccountSetId = types.StringValue(balanceSheet.Schedule12.AccountSetId)
 }
 
 func (r *BalanceSheetResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
@@ -198,20 +198,20 @@ func (r *BalanceSheetResource) Create(ctx context.Context, req resource.CreateRe
 
 	balanceSheet := response.BalanceSheet.Create.BalanceSheet
 
-	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.Id)
-	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.Id)
-	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.Id)
-	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.Id)
-	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.Id)
-	data.Schedule4AccountSetId = types.StringValue(balanceSheet.Schedule4.Id)
-	data.Schedule5AccountSetId = types.StringValue(balanceSheet.Schedule5.Id)
-	data.Schedule6AccountSetId = types.StringValue(balanceSheet.Schedule6.Id)
-	data.Schedule7AccountSetId = types.StringValue(balanceSheet.Schedule7.Id)
-	data.Schedule8AccountSetId = types.StringValue(balanceSheet.Schedule8.Id)
-	data.Schedule9AccountSetId = types.StringValue(balanceSheet.Schedule9.Id)
-	data.Schedule10AccountSetId = types.StringValue(balanceSheet.Schedule10.Id)
-	data.Schedule11AccountSetId = types.StringValue(balanceSheet.Schedule11.Id)
-	data.Schedule12AccountSetId = types.StringValue(balanceSheet.Schedule12.Id)
+	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.AccountSetId)
+	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.AccountSetId)
+	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.AccountSetId)
+	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.AccountSetId)
+	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.AccountSetId)
+	data.Schedule4AccountSetId = types.StringValue(balanceSheet.Schedule4.AccountSetId)
+	data.Schedule5AccountSetId = types.StringValue(balanceSheet.Schedule5.AccountSetId)
+	data.Schedule6AccountSetId = types.StringValue(balanceSheet.Schedule6.AccountSetId)
+	data.Schedule7AccountSetId = types.StringValue(balanceSheet.Schedule7.AccountSetId)
+	data.Schedule8AccountSetId = types.StringValue(balanceSheet.Schedule8.AccountSetId)
+	data.Schedule9AccountSetId = types.StringValue(balanceSheet.Schedule9.AccountSetId)
+	data.Schedule10AccountSetId = types.StringValue(balanceSheet.Schedule10.AccountSetId)
+	data.Schedule11AccountSetId = types.StringValue(balanceSheet.Schedule11.AccountSetId)
+	data.Schedule12AccountSetId = types.StringValue(balanceSheet.Schedule12.AccountSetId)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
