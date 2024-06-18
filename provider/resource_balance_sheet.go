@@ -22,7 +22,7 @@ type BalanceSheetResource struct {
 }
 
 type BalanceSheetResourceModel struct {
-	JournalId               types.String `tfsdk:"id"`
+	JournalId               types.String `tfsdk:"journal_id"`
 	AssetsAccountSetId      types.String `tfsdk:"assets_account_set_id"`
 	LiabilitiesAccountSetId types.String `tfsdk:"liabilities_account_set_id"`
 	Schedule1AccountSetId   types.String `tfsdk:"schedule1_account_set_id"`
@@ -47,79 +47,65 @@ func (r *BalanceSheetResource) Schema(ctx context.Context, req resource.SchemaRe
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "Cala balance sheet.",
 		Attributes: map[string]schema.Attribute{
-			"id": schema.StringAttribute{
+			"journal_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the journal associated with the balance sheet.",
 				Required:            true,
 			},
 			"assets_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for assets.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"liabilities_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for liabilities.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule1_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 1.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule2_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 2.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule3_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 3.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule4_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 4.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule5_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 5.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule6_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 6.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule7_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 7.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule8_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 8.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule9_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 9.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule10_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 10.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule11_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 11.",
 				Optional:            true,
-				Computed:            true,
 			},
 			"schedule12_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for schedule 12.",
 				Optional:            true,
-				Computed:            true,
 			},
 		},
 	}
