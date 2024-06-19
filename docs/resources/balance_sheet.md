@@ -21,7 +21,7 @@ resource "cala_journal" "journal" {
 }
 
 resource "cala_balance_sheet" "balance_sheet" {
-  id = cala_journal.journal.id
+  journal_id = cala_journal.journal.id
 }
 ```
 
@@ -30,7 +30,7 @@ resource "cala_balance_sheet" "balance_sheet" {
 
 ### Required
 
-- `id` (String) ID of the journal associated with the balance sheet.
+- `journal_id` (String) ID of the journal associated with the balance sheet.
 
 ### Read-Only
 
