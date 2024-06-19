@@ -114,7 +114,7 @@ func (r *AccountSetMemberAccountSetResource) Delete(ctx context.Context, req res
 		return
 	}
 
-	tflog.Trace(ctx, "Removed an account from an account set")
+	tflog.Trace(ctx, "Removed an account set from an account set")
 
 }
 
