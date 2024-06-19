@@ -12,6 +12,18 @@ mutation accountSetMemberAccountCreate($accountSetId: UUID!, $accountId: UUID!) 
   }
 }
 
+mutation accountSetMemberAccountRemove($accountSetId: UUID!, $accountId: UUID!) {
+  removeFromAccountSet(input: {
+    accountSetId: $accountSetId
+    memberId: $accountId
+    memberType: ACCOUNT
+  }) {
+    accountSet {
+      accountSetId
+    }
+  }
+}
+
 mutation accountSetMemberAccountSetCreate($accountSetId: UUID!, $memberAccountSetId: UUID!) {
   addToAccountSet(
     input: {
@@ -20,6 +32,18 @@ mutation accountSetMemberAccountSetCreate($accountSetId: UUID!, $memberAccountSe
       memberType: ACCOUNT_SET
     }
   ) {
+    accountSet {
+      accountSetId
+    }
+  }
+}
+
+mutation accountSetMemberAccountSetRemove($accountSetId: UUID!, $memberAccountSetId: UUID!) {
+  removeFromAccountSet(input: {
+    accountSetId: $accountSetId
+    memberId: $memberAccountSetId
+    memberType: ACCOUNT_SET
+  }) {
     accountSet {
       accountSetId
     }

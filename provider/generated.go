@@ -186,6 +186,18 @@ func (v *__accountSetMemberAccountCreateInput) GetAccountSetId() string { return
 // GetAccountId returns __accountSetMemberAccountCreateInput.AccountId, and is useful for accessing the field via an interface.
 func (v *__accountSetMemberAccountCreateInput) GetAccountId() string { return v.AccountId }
 
+// __accountSetMemberAccountRemoveInput is used internally by genqlient
+type __accountSetMemberAccountRemoveInput struct {
+	AccountSetId string `json:"accountSetId"`
+	AccountId    string `json:"accountId"`
+}
+
+// GetAccountSetId returns __accountSetMemberAccountRemoveInput.AccountSetId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountRemoveInput) GetAccountSetId() string { return v.AccountSetId }
+
+// GetAccountId returns __accountSetMemberAccountRemoveInput.AccountId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountRemoveInput) GetAccountId() string { return v.AccountId }
+
 // __accountSetMemberAccountSetCreateInput is used internally by genqlient
 type __accountSetMemberAccountSetCreateInput struct {
 	AccountSetId       string `json:"accountSetId"`
@@ -197,6 +209,20 @@ func (v *__accountSetMemberAccountSetCreateInput) GetAccountSetId() string { ret
 
 // GetMemberAccountSetId returns __accountSetMemberAccountSetCreateInput.MemberAccountSetId, and is useful for accessing the field via an interface.
 func (v *__accountSetMemberAccountSetCreateInput) GetMemberAccountSetId() string {
+	return v.MemberAccountSetId
+}
+
+// __accountSetMemberAccountSetRemoveInput is used internally by genqlient
+type __accountSetMemberAccountSetRemoveInput struct {
+	AccountSetId       string `json:"accountSetId"`
+	MemberAccountSetId string `json:"memberAccountSetId"`
+}
+
+// GetAccountSetId returns __accountSetMemberAccountSetRemoveInput.AccountSetId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountSetRemoveInput) GetAccountSetId() string { return v.AccountSetId }
+
+// GetMemberAccountSetId returns __accountSetMemberAccountSetRemoveInput.MemberAccountSetId, and is useful for accessing the field via an interface.
+func (v *__accountSetMemberAccountSetRemoveInput) GetMemberAccountSetId() string {
 	return v.MemberAccountSetId
 }
 
@@ -497,6 +523,36 @@ func (v *accountSetMemberAccountCreateResponse) GetAddToAccountSet() accountSetM
 	return v.AddToAccountSet
 }
 
+// accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload includes the requested fields of the GraphQL type RemoveFromAccountSetPayload.
+type accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload struct {
+	AccountSet accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet `json:"accountSet"`
+}
+
+// GetAccountSet returns accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload.AccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload) GetAccountSet() accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet {
+	return v.AccountSet
+}
+
+// accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet includes the requested fields of the GraphQL type AccountSet.
+type accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
+
+// accountSetMemberAccountRemoveResponse is returned by accountSetMemberAccountRemove on success.
+type accountSetMemberAccountRemoveResponse struct {
+	RemoveFromAccountSet accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload `json:"removeFromAccountSet"`
+}
+
+// GetRemoveFromAccountSet returns accountSetMemberAccountRemoveResponse.RemoveFromAccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountRemoveResponse) GetRemoveFromAccountSet() accountSetMemberAccountRemoveRemoveFromAccountSetRemoveFromAccountSetPayload {
+	return v.RemoveFromAccountSet
+}
+
 // accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload includes the requested fields of the GraphQL type AddToAccountSetPayload.
 type accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload struct {
 	AccountSet accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayloadAccountSet `json:"accountSet"`
@@ -525,6 +581,36 @@ type accountSetMemberAccountSetCreateResponse struct {
 // GetAddToAccountSet returns accountSetMemberAccountSetCreateResponse.AddToAccountSet, and is useful for accessing the field via an interface.
 func (v *accountSetMemberAccountSetCreateResponse) GetAddToAccountSet() accountSetMemberAccountSetCreateAddToAccountSetAddToAccountSetPayload {
 	return v.AddToAccountSet
+}
+
+// accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload includes the requested fields of the GraphQL type RemoveFromAccountSetPayload.
+type accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload struct {
+	AccountSet accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet `json:"accountSet"`
+}
+
+// GetAccountSet returns accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload.AccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload) GetAccountSet() accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet {
+	return v.AccountSet
+}
+
+// accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet includes the requested fields of the GraphQL type AccountSet.
+type accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayloadAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
+
+// accountSetMemberAccountSetRemoveResponse is returned by accountSetMemberAccountSetRemove on success.
+type accountSetMemberAccountSetRemoveResponse struct {
+	RemoveFromAccountSet accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload `json:"removeFromAccountSet"`
+}
+
+// GetRemoveFromAccountSet returns accountSetMemberAccountSetRemoveResponse.RemoveFromAccountSet, and is useful for accessing the field via an interface.
+func (v *accountSetMemberAccountSetRemoveResponse) GetRemoveFromAccountSet() accountSetMemberAccountSetRemoveRemoveFromAccountSetRemoveFromAccountSetPayload {
+	return v.RemoveFromAccountSet
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutation includes the requested fields of the GraphQL type BalanceSheetMutation.
@@ -1394,6 +1480,45 @@ func accountSetMemberAccountCreate(
 	return &data_, err_
 }
 
+// The query or mutation executed by accountSetMemberAccountRemove.
+const accountSetMemberAccountRemove_Operation = `
+mutation accountSetMemberAccountRemove ($accountSetId: UUID!, $accountId: UUID!) {
+	removeFromAccountSet(input: {accountSetId:$accountSetId,memberId:$accountId,memberType:ACCOUNT}) {
+		accountSet {
+			accountSetId
+		}
+	}
+}
+`
+
+func accountSetMemberAccountRemove(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	accountSetId string,
+	accountId string,
+) (*accountSetMemberAccountRemoveResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "accountSetMemberAccountRemove",
+		Query:  accountSetMemberAccountRemove_Operation,
+		Variables: &__accountSetMemberAccountRemoveInput{
+			AccountSetId: accountSetId,
+			AccountId:    accountId,
+		},
+	}
+	var err_ error
+
+	var data_ accountSetMemberAccountRemoveResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
 // The query or mutation executed by accountSetMemberAccountSetCreate.
 const accountSetMemberAccountSetCreate_Operation = `
 mutation accountSetMemberAccountSetCreate ($accountSetId: UUID!, $memberAccountSetId: UUID!) {
@@ -1422,6 +1547,45 @@ func accountSetMemberAccountSetCreate(
 	var err_ error
 
 	var data_ accountSetMemberAccountSetCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by accountSetMemberAccountSetRemove.
+const accountSetMemberAccountSetRemove_Operation = `
+mutation accountSetMemberAccountSetRemove ($accountSetId: UUID!, $memberAccountSetId: UUID!) {
+	removeFromAccountSet(input: {accountSetId:$accountSetId,memberId:$memberAccountSetId,memberType:ACCOUNT_SET}) {
+		accountSet {
+			accountSetId
+		}
+	}
+}
+`
+
+func accountSetMemberAccountSetRemove(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	accountSetId string,
+	memberAccountSetId string,
+) (*accountSetMemberAccountSetRemoveResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "accountSetMemberAccountSetRemove",
+		Query:  accountSetMemberAccountSetRemove_Operation,
+		Variables: &__accountSetMemberAccountSetRemoveInput{
+			AccountSetId:       accountSetId,
+			MemberAccountSetId: memberAccountSetId,
+		},
+	}
+	var err_ error
+
+	var data_ accountSetMemberAccountSetRemoveResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(
