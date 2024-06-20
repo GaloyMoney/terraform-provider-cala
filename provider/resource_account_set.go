@@ -7,7 +7,6 @@ import (
 	"github.com/Khan/genqlient/graphql"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
@@ -57,7 +56,7 @@ func (r *AccountSetResource) Schema(ctx context.Context, req resource.SchemaRequ
 			},
 			"normal_balance_type": schema.StringAttribute{
 				MarkdownDescription: "normalBalanceType",
-				Default:             stringdefault.StaticString("CREDIT"),
+				Optional:            true,
 				Computed:            true,
 			},
 		},
@@ -99,11 +98,6 @@ func (r *AccountSetResource) Create(ctx context.Context, req resource.CreateRequ
 		return
 	}
 
-	if err != nil {
-		resp.Diagnostics.AddError("Invalid Status", fmt.Sprintf("Unable to convert status to Status: %s", err))
-		return
-	}
-
 	input := AccountSetCreateInput{
 		AccountSetId:      data.AccountSetId.ValueString(),
 		JournalId:         data.JournalId.ValueString(),
@@ -126,6 +120,8 @@ func (r *AccountSetResource) Create(ctx context.Context, req resource.CreateRequ
 	data.AccountSetId = types.StringValue(account.AccountSetId)
 	data.JournalId = types.StringValue(account.JournalId)
 	data.Name = types.StringValue(account.Name)
+	data.Description = types.StringPointerValue(account.Description)
+	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
