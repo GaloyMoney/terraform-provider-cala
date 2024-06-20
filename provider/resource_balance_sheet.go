@@ -25,6 +25,7 @@ type BalanceSheetResourceModel struct {
 	JournalId               types.String `tfsdk:"journal_id"`
 	AssetsAccountSetId      types.String `tfsdk:"assets_account_set_id"`
 	LiabilitiesAccountSetId types.String `tfsdk:"liabilities_account_set_id"`
+	EquityAccountSetId      types.String `tfsdk:"equity_account_set_id"`
 	Schedule1AccountSetId   types.String `tfsdk:"schedule1_account_set_id"`
 	Schedule2AccountSetId   types.String `tfsdk:"schedule2_account_set_id"`
 	Schedule3AccountSetId   types.String `tfsdk:"schedule3_account_set_id"`
@@ -57,6 +58,10 @@ func (r *BalanceSheetResource) Schema(ctx context.Context, req resource.SchemaRe
 			},
 			"liabilities_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account set for liabilities.",
+				Computed:            true,
+			},
+			"equity_account_set_id": schema.StringAttribute{
+				MarkdownDescription: "ID of the account set for equity.",
 				Computed:            true,
 			},
 			"schedule1_account_set_id": schema.StringAttribute{
@@ -147,6 +152,7 @@ func (r *BalanceSheetResource) Read(ctx context.Context, req resource.ReadReques
 
 	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.AccountSetId)
 	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.AccountSetId)
+	data.EquityAccountSetId = types.StringValue(balanceSheet.Equity.AccountSetId)
 	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.AccountSetId)
 	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.AccountSetId)
 	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.AccountSetId)
@@ -186,6 +192,7 @@ func (r *BalanceSheetResource) Create(ctx context.Context, req resource.CreateRe
 
 	data.AssetsAccountSetId = types.StringValue(balanceSheet.Assets.AccountSetId)
 	data.LiabilitiesAccountSetId = types.StringValue(balanceSheet.Liabilities.AccountSetId)
+	data.EquityAccountSetId = types.StringValue(balanceSheet.Equity.AccountSetId)
 	data.Schedule1AccountSetId = types.StringValue(balanceSheet.Schedule1.AccountSetId)
 	data.Schedule2AccountSetId = types.StringValue(balanceSheet.Schedule2.AccountSetId)
 	data.Schedule3AccountSetId = types.StringValue(balanceSheet.Schedule3.AccountSetId)

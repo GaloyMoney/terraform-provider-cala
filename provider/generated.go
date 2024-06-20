@@ -637,6 +637,7 @@ func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCre
 type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet struct {
 	Assets      balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet      `json:"assets"`
 	Liabilities balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet `json:"liabilities"`
+	Equity      balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet      `json:"equity"`
 	Schedule1   balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule1AccountSet   `json:"schedule1"`
 	Schedule2   balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule2AccountSet   `json:"schedule2"`
 	Schedule3   balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetSchedule3AccountSet   `json:"schedule3"`
@@ -659,6 +660,11 @@ func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCre
 // GetLiabilities returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet.Liabilities, and is useful for accessing the field via an interface.
 func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet) GetLiabilities() balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetLiabilitiesAccountSet {
 	return v.Liabilities
+}
+
+// GetEquity returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet.Equity, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet) GetEquity() balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet {
+	return v.Equity
 }
 
 // GetSchedule1 returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheet.Schedule1, and is useful for accessing the field via an interface.
@@ -728,6 +734,16 @@ type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreateP
 
 // GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet.AccountSetId, and is useful for accessing the field via an interface.
 func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetAssetsAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
+
+// balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet includes the requested fields of the GraphQL type AccountSet.
+type balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetCreateBalanceSheetBalanceSheetMutationCreateBalanceSheetCreatePayloadBalanceSheetEquityAccountSet) GetAccountSetId() string {
 	return v.AccountSetId
 }
 
@@ -884,6 +900,7 @@ func (v *balanceSheetGetBalanceSheetBalanceSheetQuery) GetByJournalId() *balance
 // balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet includes the requested fields of the GraphQL type BalanceSheet.
 type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet struct {
 	Liabilities balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet `json:"liabilities"`
+	Equity      balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet      `json:"equity"`
 	Assets      balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet      `json:"assets"`
 	Schedule1   balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule1AccountSet   `json:"schedule1"`
 	Schedule2   balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetSchedule2AccountSet   `json:"schedule2"`
@@ -902,6 +919,11 @@ type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet struct 
 // GetLiabilities returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet.Liabilities, and is useful for accessing the field via an interface.
 func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet) GetLiabilities() balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetLiabilitiesAccountSet {
 	return v.Liabilities
+}
+
+// GetEquity returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet.Equity, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet) GetEquity() balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet {
+	return v.Equity
 }
 
 // GetAssets returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheet.Assets, and is useful for accessing the field via an interface.
@@ -976,6 +998,16 @@ type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAc
 
 // GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet.AccountSetId, and is useful for accessing the field via an interface.
 func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetAssetsAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
+
+// balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet includes the requested fields of the GraphQL type AccountSet.
+type balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *balanceSheetGetBalanceSheetBalanceSheetQueryByJournalIdBalanceSheetEquityAccountSet) GetAccountSetId() string {
 	return v.AccountSetId
 }
 
@@ -1609,6 +1641,9 @@ mutation balanceSheetCreate ($input: BalanceSheetCreateInput!) {
 				liabilities {
 					accountSetId
 				}
+				equity {
+					accountSetId
+				}
 				schedule1 {
 					accountSetId
 				}
@@ -1683,6 +1718,9 @@ query balanceSheetGet ($journalId: UUID!) {
 	balanceSheet {
 		byJournalId(journalId: $journalId) {
 			liabilities {
+				accountSetId
+			}
+			equity {
 				accountSetId
 			}
 			assets {

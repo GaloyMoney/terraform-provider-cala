@@ -35,6 +35,7 @@ resource "cala_balance_sheet" "balance_sheet" {
 ### Read-Only
 
 - `assets_account_set_id` (String) ID of the account set for assets.
+- `equity_account_set_id` (String) ID of the account set for equity.
 - `liabilities_account_set_id` (String) ID of the account set for liabilities.
 - `schedule10_account_set_id` (String) ID of the account set for schedule 10.
 - `schedule11_account_set_id` (String) ID of the account set for schedule 11.

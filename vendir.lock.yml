@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'fix: update schema'
-      sha: e1e6f2af96c1d0c2865308724b210be3b0841f7e
+      commitTitle: 'fix: sdl'
+      sha: ce094294dc275ef32a608ec2edfb51cfd83e9dc0
       tags:
-      - 0.3.2-3-ge1e6f2a
+      - 0.3.4-3-gce09429
     path: vendor
   path: schema
 kind: LockConfig

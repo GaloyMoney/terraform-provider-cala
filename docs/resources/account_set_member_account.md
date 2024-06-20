@@ -3,12 +3,12 @@
 page_title: "cala_account_set_member_account Resource - terraform-provider-cala"
 subcategory: ""
 description: |-
-  Cala account.
+  Represents the membership of an account in an account set.
 ---
 
 # cala_account_set_member_account (Resource)
 
-Cala account.
+Represents the membership of an account in an account set.
 
 ## Example Usage
 

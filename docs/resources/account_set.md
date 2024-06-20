@@ -3,12 +3,12 @@
 page_title: "cala_account_set Resource - terraform-provider-cala"
 subcategory: ""
 description: |-
-  Cala account.
+  Cala account set.
 ---
 
 # cala_account_set (Resource)
 
-Cala account.
+Cala account set.
 
 ## Example Usage
 

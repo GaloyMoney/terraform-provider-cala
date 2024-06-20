@@ -4,6 +4,9 @@ query balanceSheetGet($journalId: UUID!) {
       liabilities {
         accountSetId
       }
+      equity {
+        accountSetId
+      }
       assets {
         accountSetId
       }
@@ -55,6 +58,9 @@ mutation balanceSheetCreate($input: BalanceSheetCreateInput!) {
           accountSetId
         }
         liabilities {
+          accountSetId
+        }
+        equity {
           accountSetId
         }
         schedule1 {
