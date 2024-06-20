@@ -41,7 +41,4 @@ resource "cala_account_set" "set" {
 ### Optional
 
 - `description` (String) Description of the account.
-
-### Read-Only
-
 - `normal_balance_type` (String) normalBalanceType
