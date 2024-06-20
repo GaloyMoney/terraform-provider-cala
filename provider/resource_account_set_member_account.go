@@ -34,7 +34,7 @@ func (r *AccountSetMemberAccountResource) Metadata(ctx context.Context, req reso
 
 func (r *AccountSetMemberAccountResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: "Cala account.",
+		MarkdownDescription: "Represents the membership of an account in an account set.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
 				MarkdownDescription: "ID of the account.",
