@@ -155,19 +155,19 @@ func (r *AccountSetResource) Update(ctx context.Context, req resource.UpdateRequ
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
-			return
+		return
 	}
 
 	normalBalanceType, err := toDebitOrCredit(data.NormalBalanceType.ValueString())
 	if err != nil {
-			resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
-			return
+		resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
+		return
 	}
 
 	input := AccountSetUpdateInput{
-			Name:              data.Name.ValueStringPointer(),
-			Description:       data.Description.ValueStringPointer(),
-			NormalBalanceType: &normalBalanceType,
+		Name:              data.Name.ValueStringPointer(),
+		Description:       data.Description.ValueStringPointer(),
+		NormalBalanceType: &normalBalanceType,
 	}
 
 	// Log the input data before the update call
