@@ -152,26 +152,28 @@ func (r *AccountSetResource) Read(ctx context.Context, req resource.ReadRequest,
 func (r *AccountSetResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 	var data *AccountSetResourceModel
 
-	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
-		return
+			return
 	}
 
 	normalBalanceType, err := toDebitOrCredit(data.NormalBalanceType.ValueString())
 	if err != nil {
-		resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
-		return
+			resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
+			return
 	}
 
 	input := AccountSetUpdateInput{
-		Name:              data.Name.ValueStringPointer(),
-		Description:       data.Description.ValueStringPointer(),
-		NormalBalanceType: &normalBalanceType,
+			Name:              data.Name.ValueStringPointer(),
+			Description:       data.Description.ValueStringPointer(),
+			NormalBalanceType: &normalBalanceType,
 	}
 
-	response, err := accountSetUpdate(ctx, *r.client, data.AccountSetId.ValueString(), input)
+	// Log the input data before the update call
+	tflog.Debug(ctx, fmt.Sprintf("Updating accountSet with ID: %s, Name: %s", data.AccountSetId.ValueString(), data.Name.ValueString()))
 
+	_, err = accountSetUpdate(ctx, *r.client, data.AccountSetId.ValueString(), input)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update accountSet, got error: %s", err))
 		return
@@ -179,15 +181,13 @@ func (r *AccountSetResource) Update(ctx context.Context, req resource.UpdateRequ
 
 	tflog.Trace(ctx, "updated an accountSet")
 
-	account := response.AccountSetUpdate.AccountSet
+	// Call the Read function to refresh the state
+	readResp := &resource.ReadResponse{}
+	r.Read(ctx, resource.ReadRequest{
+		State: req.State,
+	}, readResp)
 
-	data.AccountSetId = types.StringValue(account.AccountSetId)
-	data.JournalId = types.StringValue(account.JournalId)
-	data.Name = types.StringValue(account.Name)
-	data.Description = types.StringPointerValue(account.Description)
-	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
-
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
+	resp.Diagnostics.Append(readResp.Diagnostics...)
 }
 
 func (r *AccountSetResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
