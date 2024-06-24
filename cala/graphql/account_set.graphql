@@ -22,3 +22,15 @@ query accountSetGet($id: UUID!) {
     normalBalanceType
   }
 }
+
+mutation accountSetUpdate($id: UUID!, $input: AccountSetUpdateInput!) {
+  accountSetUpdate(id: $id, input: $input) {
+    accountSet {
+      accountSetId
+      journalId
+      name
+      description
+      normalBalanceType
+    }
+  }
+}
