@@ -23,9 +23,9 @@ type AccountSetMemberAccountResource struct {
 }
 
 type AccountSetMemberAccountResourceModel struct {
-	AccountSetMemberId         types.String `tfsdk:"id"`
-	AccountSetId              types.String `tfsdk:"account_set_id"`
-	MemberAccountId       types.String `tfsdk:"member_account_id"`
+	AccountSetMemberId types.String `tfsdk:"id"`
+	AccountSetId       types.String `tfsdk:"account_set_id"`
+	MemberAccountId    types.String `tfsdk:"member_account_id"`
 }
 
 func (r *AccountSetMemberAccountResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -46,7 +46,7 @@ func (r *AccountSetMemberAccountResource) Schema(ctx context.Context, req resour
 			},
 			"member_account_id": schema.StringAttribute{
 				MarkdownDescription: "Id of the member AccountSet",
-				Required: true,
+				Required:            true,
 			},
 		},
 	}
@@ -122,7 +122,6 @@ func (r *AccountSetMemberAccountResource) Read(ctx context.Context, req resource
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
-
 
 func (r *AccountSetMemberAccountResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 

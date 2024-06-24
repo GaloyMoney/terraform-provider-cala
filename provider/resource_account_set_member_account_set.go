@@ -46,7 +46,7 @@ func (r *AccountSetMemberAccountSetResource) Schema(ctx context.Context, req res
 			},
 			"member_account_set_id": schema.StringAttribute{
 				MarkdownDescription: "Id of the member AccountSet",
-				Required: true,
+				Required:            true,
 			},
 		},
 	}
@@ -91,7 +91,7 @@ func (r *AccountSetMemberAccountSetResource) Create(ctx context.Context, req res
 
 	tflog.Trace(ctx, "Added an account set to an account set")
 
-  data.AccountSetMemberId = types.StringValue(fmt.Sprintf("account_set/%s/member_account_set/%s", data.AccountSetId.ValueString(), data.MemberAccountSetId.ValueString()))
+	data.AccountSetMemberId = types.StringValue(fmt.Sprintf("account_set/%s/member_account_set/%s", data.AccountSetId.ValueString(), data.MemberAccountSetId.ValueString()))
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
