@@ -58,4 +58,4 @@ resource "cala_bitfinex_integration" "bfx" {
 
 ### Read-Only
 
-- `omnibus_account_set_id` (String) The AccountSet id for the omnibus AccountSet
+- `omnibus_account_id` (String) The Account id for the omnibus Account

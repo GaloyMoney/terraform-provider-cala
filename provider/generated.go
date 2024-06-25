@@ -1173,10 +1173,10 @@ func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegra
 
 // bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration includes the requested fields of the GraphQL type BfxIntegration.
 type bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration struct {
-	IntegrationId       string  `json:"integrationId"`
-	Name                string  `json:"name"`
-	Description         *string `json:"description"`
-	OmnibusAccountSetId string  `json:"omnibusAccountSetId"`
+	IntegrationId    string  `json:"integrationId"`
+	Name             string  `json:"name"`
+	Description      *string `json:"description"`
+	OmnibusAccountId string  `json:"omnibusAccountId"`
 }
 
 // GetIntegrationId returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.IntegrationId, and is useful for accessing the field via an interface.
@@ -1194,9 +1194,9 @@ func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegra
 	return v.Description
 }
 
-// GetOmnibusAccountSetId returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.OmnibusAccountSetId, and is useful for accessing the field via an interface.
-func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetOmnibusAccountSetId() string {
-	return v.OmnibusAccountSetId
+// GetOmnibusAccountId returns bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration.OmnibusAccountId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationCreateBitfinexBitfinexMutationIntegrationCreateBfxIntegrationCreatePayloadIntegrationBfxIntegration) GetOmnibusAccountId() string {
+	return v.OmnibusAccountId
 }
 
 // bfxIntegrationCreateResponse is returned by bfxIntegrationCreate on success.
@@ -1221,10 +1221,10 @@ func (v *bfxIntegrationGetBitfinexBitfinexQuery) GetIntegration() *bfxIntegratio
 
 // bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration includes the requested fields of the GraphQL type BfxIntegration.
 type bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration struct {
-	IntegrationId       string  `json:"integrationId"`
-	Name                string  `json:"name"`
-	Description         *string `json:"description"`
-	OmnibusAccountSetId string  `json:"omnibusAccountSetId"`
+	IntegrationId    string  `json:"integrationId"`
+	Name             string  `json:"name"`
+	Description      *string `json:"description"`
+	OmnibusAccountId string  `json:"omnibusAccountId"`
 }
 
 // GetIntegrationId returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.IntegrationId, and is useful for accessing the field via an interface.
@@ -1242,9 +1242,9 @@ func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetDes
 	return v.Description
 }
 
-// GetOmnibusAccountSetId returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.OmnibusAccountSetId, and is useful for accessing the field via an interface.
-func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetOmnibusAccountSetId() string {
-	return v.OmnibusAccountSetId
+// GetOmnibusAccountId returns bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration.OmnibusAccountId, and is useful for accessing the field via an interface.
+func (v *bfxIntegrationGetBitfinexBitfinexQueryIntegrationBfxIntegration) GetOmnibusAccountId() string {
+	return v.OmnibusAccountId
 }
 
 // bfxIntegrationGetResponse is returned by bfxIntegrationGet on success.
@@ -1802,7 +1802,7 @@ mutation bfxIntegrationCreate ($input: BfxIntegrationCreateInput!) {
 				integrationId
 				name
 				description
-				omnibusAccountSetId
+				omnibusAccountId
 			}
 		}
 	}
@@ -1843,7 +1843,7 @@ query bfxIntegrationGet ($id: UUID!) {
 			integrationId
 			name
 			description
-			omnibusAccountSetId
+			omnibusAccountId
 		}
 	}
 }

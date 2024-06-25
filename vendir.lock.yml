@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'fix: sdl'
-      sha: ce094294dc275ef32a608ec2edfb51cfd83e9dc0
+      commitTitle: 'refactor: remove bfx omnibus account set'
+      sha: 13bd2e53f84ced6b6678681dbbc823ce051fb2af
       tags:
-      - 0.3.4-3-gce09429
+      - 0.3.5-4-g13bd2e5
     path: vendor
   path: schema
 kind: LockConfig

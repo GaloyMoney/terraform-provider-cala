@@ -29,7 +29,7 @@ type BitfinexIntegrationResourceModel struct {
 	JournalId             types.String `tfsdk:"journal_id"`
 	Key                   types.String `tfsdk:"key"`
 	Secret                types.String `tfsdk:"secret"`
-	OmnibusAccountSetId   types.String `tfsdk:"omnibus_account_set_id"`
+	OmnibusAccountId      types.String `tfsdk:"omnibus_account_id"`
 }
 
 func (r *BitfinexIntegrationResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -66,8 +66,8 @@ func (r *BitfinexIntegrationResource) Schema(ctx context.Context, req resource.S
 				Required:            true,
 				Sensitive:           true,
 			},
-			"omnibus_account_set_id": schema.StringAttribute{
-				MarkdownDescription: "The AccountSet id for the omnibus AccountSet",
+			"omnibus_account_id": schema.StringAttribute{
+				MarkdownDescription: "The Account id for the omnibus Account",
 				Computed:            true,
 			},
 		},
@@ -126,7 +126,7 @@ func (r *BitfinexIntegrationResource) Create(ctx context.Context, req resource.C
 	data.BitfinexIntegrationId = types.StringValue(integration.IntegrationId)
 	data.Name = types.StringValue(integration.Name)
 	data.Description = types.StringPointerValue(integration.Description)
-	data.OmnibusAccountSetId = types.StringValue(integration.OmnibusAccountSetId)
+	data.OmnibusAccountId = types.StringValue(integration.OmnibusAccountId)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -148,7 +148,7 @@ func (r *BitfinexIntegrationResource) Read(ctx context.Context, req resource.Rea
 	data.BitfinexIntegrationId = types.StringValue(integration.IntegrationId)
 	data.Name = types.StringValue(integration.Name)
 	data.Description = types.StringPointerValue(integration.Description)
-	data.OmnibusAccountSetId = types.StringValue(integration.OmnibusAccountSetId)
+	data.OmnibusAccountId = types.StringValue(integration.OmnibusAccountId)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }

@@ -4,7 +4,7 @@ query bfxIntegrationGet($id: UUID!){
       integrationId
       name
       description
-      omnibusAccountSetId
+      omnibusAccountId
     }
   }
 }
@@ -18,7 +18,7 @@ mutation bfxIntegrationCreate($input: BfxIntegrationCreateInput!) {
         integrationId
         name
         description
-        omnibusAccountSetId
+        omnibusAccountId
       }
     }
   }
