@@ -170,9 +170,6 @@ func (r *AccountSetResource) Update(ctx context.Context, req resource.UpdateRequ
 		NormalBalanceType: &normalBalanceType,
 	}
 
-	// Log the input data before the update call
-	tflog.Debug(ctx, fmt.Sprintf("Updating accountSet with ID: %s, Name: %s", data.AccountSetId.ValueString(), data.Name.ValueString()))
-
 	_, err = accountSetUpdate(ctx, *r.client, data.AccountSetId.ValueString(), input)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update accountSet, got error: %s", err))
