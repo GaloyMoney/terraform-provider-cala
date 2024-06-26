@@ -174,7 +174,49 @@ func (r *AccountResource) Read(ctx context.Context, req resource.ReadRequest, re
 }
 
 func (r *AccountResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *AccountResourceModel
 
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	normalBalanceType, err := toDebitOrCredit(data.NormalBalanceType.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
+		return
+	}
+
+	status, err := toStatus(data.Status.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("Invalid Status", fmt.Sprintf("Unable to convert status to Status: %s", err))
+		return
+	}
+
+	input := AccountUpdateInput{
+		Name:              data.Name.ValueStringPointer(),
+		Description: 		 data.Description.ValueStringPointer(),
+		NormalBalanceType: &normalBalanceType,
+		Status:            &status,
+		ExternalId: 			data.ExternalId.ValueStringPointer(),
+		Code: 						data.Code.ValueStringPointer(),
+	}
+
+	_, err = accountUpdate(ctx, *r.client, data.AccountId.ValueString(), input)
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update account, got error: %s", err))
+		return
+	}
+
+	tflog.Trace(ctx, "updated an account")
+
+	readResp := &resource.ReadResponse{}
+	r.Read(ctx, resource.ReadRequest{
+		State: req.State,
+	}, readResp)
+
+	resp.Diagnostics.Append(readResp.Diagnostics...)
 }
 
 func (r *AccountResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
