@@ -20,6 +20,11 @@ query accountSetGet($id: UUID!) {
     name
     description
     normalBalanceType
+    sets(first: 10) {
+      nodes {
+        accountSetId
+      }
+    }
   }
 }
 
