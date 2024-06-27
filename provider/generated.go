@@ -340,6 +340,14 @@ type __journalCreateInput struct {
 // GetInput returns __journalCreateInput.Input, and is useful for accessing the field via an interface.
 func (v *__journalCreateInput) GetInput() JournalCreateInput { return v.Input }
 
+// __journalGetInput is used internally by genqlient
+type __journalGetInput struct {
+	Id string `json:"id"`
+}
+
+// GetId returns __journalGetInput.Id, and is useful for accessing the field via an interface.
+func (v *__journalGetInput) GetId() string { return v.Id }
+
 // accountCreateAccountCreateAccountCreatePayload includes the requested fields of the GraphQL type AccountCreatePayload.
 type accountCreateAccountCreateAccountCreatePayload struct {
 	Account accountCreateAccountCreateAccountCreatePayloadAccount `json:"account"`
@@ -1495,6 +1503,34 @@ func (v *journalCreateResponse) GetJournalCreate() journalCreateJournalCreateJou
 	return v.JournalCreate
 }
 
+// journalGetJournal includes the requested fields of the GraphQL type Journal.
+type journalGetJournal struct {
+	JournalId   string  `json:"journalId"`
+	Name        string  `json:"name"`
+	Status      Status  `json:"status"`
+	Description *string `json:"description"`
+}
+
+// GetJournalId returns journalGetJournal.JournalId, and is useful for accessing the field via an interface.
+func (v *journalGetJournal) GetJournalId() string { return v.JournalId }
+
+// GetName returns journalGetJournal.Name, and is useful for accessing the field via an interface.
+func (v *journalGetJournal) GetName() string { return v.Name }
+
+// GetStatus returns journalGetJournal.Status, and is useful for accessing the field via an interface.
+func (v *journalGetJournal) GetStatus() Status { return v.Status }
+
+// GetDescription returns journalGetJournal.Description, and is useful for accessing the field via an interface.
+func (v *journalGetJournal) GetDescription() *string { return v.Description }
+
+// journalGetResponse is returned by journalGet on success.
+type journalGetResponse struct {
+	Journal *journalGetJournal `json:"journal"`
+}
+
+// GetJournal returns journalGetResponse.Journal, and is useful for accessing the field via an interface.
+func (v *journalGetResponse) GetJournal() *journalGetJournal { return v.Journal }
+
 // The query or mutation executed by accountCreate.
 const accountCreate_Operation = `
 mutation accountCreate ($input: AccountCreateInput!) {
@@ -2187,6 +2223,44 @@ func journalCreate(
 	var err_ error
 
 	var data_ journalCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by journalGet.
+const journalGet_Operation = `
+query journalGet ($id: UUID!) {
+	journal(id: $id) {
+		journalId
+		name
+		status
+		description
+	}
+}
+`
+
+func journalGet(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	id string,
+) (*journalGetResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "journalGet",
+		Query:  journalGet_Operation,
+		Variables: &__journalGetInput{
+			Id: id,
+		},
+	}
+	var err_ error
+
+	var data_ journalGetResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(
