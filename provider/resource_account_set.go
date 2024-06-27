@@ -178,13 +178,22 @@ func (r *AccountSetResource) Update(ctx context.Context, req resource.UpdateRequ
 
 	tflog.Trace(ctx, "updated an accountSet")
 
-	// Call the Read function to refresh the state
-	readResp := &resource.ReadResponse{}
-	r.Read(ctx, resource.ReadRequest{
-		State: req.State,
-	}, readResp)
+	response, err := accountSetGet(ctx, *r.client, data.AccountSetId.ValueString())
 
-	resp.Diagnostics.Append(readResp.Diagnostics...)
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read accountSet, got error: %s", err))
+		return
+	}
+
+	accountSet := response.AccountSet
+
+	data.AccountSetId = types.StringValue(accountSet.AccountSetId)
+	data.JournalId = types.StringValue(accountSet.JournalId)
+	data.Name = types.StringValue(accountSet.Name)
+	data.Description = types.StringPointerValue(accountSet.Description)
+	data.NormalBalanceType = types.StringValue(string(accountSet.NormalBalanceType))
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountSetResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
