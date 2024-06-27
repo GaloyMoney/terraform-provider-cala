@@ -160,6 +160,11 @@ func (r *AccountResource) Read(ctx context.Context, req resource.ReadRequest, re
 		return
 	}
 
+	if response.Account == nil {
+		resp.State.RemoveResource(ctx)
+		return
+	}
+
 	account := response.Account
 
 	data.AccountId = types.StringValue(account.AccountId)
