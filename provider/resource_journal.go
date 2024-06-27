@@ -124,9 +124,13 @@ func (r *JournalResource) Read(ctx context.Context, req resource.ReadRequest, re
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
 	response, err := journalGet(ctx, *r.client, data.JournalId.ValueString())
-
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to get journal, got error: %s", err))
+		return
+	}
+
+	if response.Journal == nil {
+		resp.State.RemoveResource(ctx)
 		return
 	}
 
