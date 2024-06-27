@@ -94,6 +94,37 @@ func (v *AccountSetUpdateInput) GetDescription() *string { return v.Description 
 // GetMetadata returns AccountSetUpdateInput.Metadata, and is useful for accessing the field via an interface.
 func (v *AccountSetUpdateInput) GetMetadata() *json.RawMessage { return v.Metadata }
 
+type AccountUpdateInput struct {
+	ExternalId        *string          `json:"externalId"`
+	Code              *string          `json:"code"`
+	Name              *string          `json:"name"`
+	NormalBalanceType *DebitOrCredit   `json:"normalBalanceType"`
+	Description       *string          `json:"description"`
+	Status            *Status          `json:"status"`
+	Metadata          *json.RawMessage `json:"metadata"`
+}
+
+// GetExternalId returns AccountUpdateInput.ExternalId, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetExternalId() *string { return v.ExternalId }
+
+// GetCode returns AccountUpdateInput.Code, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetCode() *string { return v.Code }
+
+// GetName returns AccountUpdateInput.Name, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetName() *string { return v.Name }
+
+// GetNormalBalanceType returns AccountUpdateInput.NormalBalanceType, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetNormalBalanceType() *DebitOrCredit { return v.NormalBalanceType }
+
+// GetDescription returns AccountUpdateInput.Description, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetDescription() *string { return v.Description }
+
+// GetStatus returns AccountUpdateInput.Status, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetStatus() *Status { return v.Status }
+
+// GetMetadata returns AccountUpdateInput.Metadata, and is useful for accessing the field via an interface.
+func (v *AccountUpdateInput) GetMetadata() *json.RawMessage { return v.Metadata }
+
 type BalanceSheetCreateInput struct {
 	JournalId string `json:"journalId"`
 }
@@ -256,6 +287,18 @@ func (v *__accountSetUpdateInput) GetId() string { return v.Id }
 
 // GetInput returns __accountSetUpdateInput.Input, and is useful for accessing the field via an interface.
 func (v *__accountSetUpdateInput) GetInput() AccountSetUpdateInput { return v.Input }
+
+// __accountUpdateInput is used internally by genqlient
+type __accountUpdateInput struct {
+	Id    string             `json:"id"`
+	Input AccountUpdateInput `json:"input"`
+}
+
+// GetId returns __accountUpdateInput.Id, and is useful for accessing the field via an interface.
+func (v *__accountUpdateInput) GetId() string { return v.Id }
+
+// GetInput returns __accountUpdateInput.Input, and is useful for accessing the field via an interface.
+func (v *__accountUpdateInput) GetInput() AccountUpdateInput { return v.Input }
 
 // __balanceSheetCreateInput is used internally by genqlient
 type __balanceSheetCreateInput struct {
@@ -696,6 +739,72 @@ type accountSetUpdateResponse struct {
 // GetAccountSetUpdate returns accountSetUpdateResponse.AccountSetUpdate, and is useful for accessing the field via an interface.
 func (v *accountSetUpdateResponse) GetAccountSetUpdate() accountSetUpdateAccountSetUpdateAccountSetUpdatePayload {
 	return v.AccountSetUpdate
+}
+
+// accountUpdateAccountUpdateAccountUpdatePayload includes the requested fields of the GraphQL type AccountUpdatePayload.
+type accountUpdateAccountUpdateAccountUpdatePayload struct {
+	Account accountUpdateAccountUpdateAccountUpdatePayloadAccount `json:"account"`
+}
+
+// GetAccount returns accountUpdateAccountUpdateAccountUpdatePayload.Account, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayload) GetAccount() accountUpdateAccountUpdateAccountUpdatePayloadAccount {
+	return v.Account
+}
+
+// accountUpdateAccountUpdateAccountUpdatePayloadAccount includes the requested fields of the GraphQL type Account.
+type accountUpdateAccountUpdateAccountUpdatePayloadAccount struct {
+	AccountId         string           `json:"accountId"`
+	Code              string           `json:"code"`
+	Name              string           `json:"name"`
+	NormalBalanceType DebitOrCredit    `json:"normalBalanceType"`
+	Status            Status           `json:"status"`
+	ExternalId        *string          `json:"externalId"`
+	Description       *string          `json:"description"`
+	Metadata          *json.RawMessage `json:"metadata"`
+}
+
+// GetAccountId returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.AccountId, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetAccountId() string {
+	return v.AccountId
+}
+
+// GetCode returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.Code, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetCode() string { return v.Code }
+
+// GetName returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.Name, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetName() string { return v.Name }
+
+// GetNormalBalanceType returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.NormalBalanceType, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetNormalBalanceType() DebitOrCredit {
+	return v.NormalBalanceType
+}
+
+// GetStatus returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.Status, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetStatus() Status { return v.Status }
+
+// GetExternalId returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.ExternalId, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetExternalId() *string {
+	return v.ExternalId
+}
+
+// GetDescription returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.Description, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetDescription() *string {
+	return v.Description
+}
+
+// GetMetadata returns accountUpdateAccountUpdateAccountUpdatePayloadAccount.Metadata, and is useful for accessing the field via an interface.
+func (v *accountUpdateAccountUpdateAccountUpdatePayloadAccount) GetMetadata() *json.RawMessage {
+	return v.Metadata
+}
+
+// accountUpdateResponse is returned by accountUpdate on success.
+type accountUpdateResponse struct {
+	AccountUpdate accountUpdateAccountUpdateAccountUpdatePayload `json:"accountUpdate"`
+}
+
+// GetAccountUpdate returns accountUpdateResponse.AccountUpdate, and is useful for accessing the field via an interface.
+func (v *accountUpdateResponse) GetAccountUpdate() accountUpdateAccountUpdateAccountUpdatePayload {
+	return v.AccountUpdate
 }
 
 // balanceSheetCreateBalanceSheetBalanceSheetMutation includes the requested fields of the GraphQL type BalanceSheetMutation.
@@ -1746,6 +1855,52 @@ func accountSetUpdate(
 	var err_ error
 
 	var data_ accountSetUpdateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by accountUpdate.
+const accountUpdate_Operation = `
+mutation accountUpdate ($id: UUID!, $input: AccountUpdateInput!) {
+	accountUpdate(id: $id, input: $input) {
+		account {
+			accountId
+			code
+			name
+			normalBalanceType
+			status
+			externalId
+			description
+			metadata
+		}
+	}
+}
+`
+
+func accountUpdate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	id string,
+	input AccountUpdateInput,
+) (*accountUpdateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "accountUpdate",
+		Query:  accountUpdate_Operation,
+		Variables: &__accountUpdateInput{
+			Id:    id,
+			Input: input,
+		},
+	}
+	var err_ error
+
+	var data_ accountUpdateResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

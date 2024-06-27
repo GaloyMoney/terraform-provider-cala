@@ -174,7 +174,56 @@ func (r *AccountResource) Read(ctx context.Context, req resource.ReadRequest, re
 }
 
 func (r *AccountResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *AccountResourceModel
 
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	normalBalanceType, err := toDebitOrCredit(data.NormalBalanceType.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("Invalid Normal Balance Type", fmt.Sprintf("Unable to convert normal_balance_type to DebitOrCredit: %s", err))
+		return
+	}
+
+	// Prepare the input for the update mutation, only updating the name field
+	input := AccountUpdateInput{
+		Name:              data.Name.ValueStringPointer(),
+		Description:       data.Description.ValueStringPointer(),
+		Code:              data.Code.ValueStringPointer(),
+		NormalBalanceType: &normalBalanceType,
+		ExternalId:        data.ExternalId.ValueStringPointer(),
+	}
+
+	// Call the update mutation
+	_, err = accountUpdate(ctx, *r.client, data.AccountId.ValueString(), input)
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update account, got error: %s", err))
+		return
+	}
+
+	tflog.Trace(ctx, "updated an account")
+
+	response, err := accountGet(ctx, *r.client, data.AccountId.ValueString())
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read account, got error: %s", err))
+		return
+	}
+
+	account := response.Account
+
+	data.AccountId = types.StringValue(account.AccountId)
+	data.Description = types.StringPointerValue(account.Description)
+	data.Name = types.StringValue(account.Name)
+	data.Code = types.StringValue(account.Code)
+	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
+	data.Status = types.StringValue(string(account.Status))
+	data.ExternalId = types.StringPointerValue(account.ExternalId)
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {

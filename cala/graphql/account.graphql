@@ -32,3 +32,21 @@ mutation accountCreate($input: AccountCreateInput!) {
     }
   }
 }
+
+mutation accountUpdate($id: UUID!, $input: AccountUpdateInput!) {
+  accountUpdate(
+    id: $id
+    input: $input
+  ) {
+    account {
+      accountId
+      code
+      name
+      normalBalanceType
+      status
+      externalId
+      description
+      metadata
+    }
+  }
+}
