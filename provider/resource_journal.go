@@ -143,7 +143,43 @@ func (r *JournalResource) Read(ctx context.Context, req resource.ReadRequest, re
 }
 
 func (r *JournalResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	// var data *JournalResourceModel
+	var data *JournalResourceModel
+
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	input := JournalUpdateInput{
+		Name:        data.Name.ValueStringPointer(),
+		Description: data.Description.ValueStringPointer(),
+	}
+
+	_, err := journalUpdate(ctx, *r.client, data.JournalId.ValueString(), input)
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update journal, got error: %s", err))
+		return
+	}
+
+	tflog.Trace(ctx, "updated a journal")
+
+	response, err := journalGet(ctx, *r.client, data.JournalId.ValueString())
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to get journal, got error: %s", err))
+		return
+	}
+
+	journal := response.Journal
+
+	data.JournalId = types.StringValue(journal.JournalId)
+	data.Name = types.StringValue(journal.Name)
+	data.Description = types.StringPointerValue(journal.Description)
+	data.Status = types.StringValue(string(journal.Status))
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *JournalResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {

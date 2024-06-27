@@ -19,3 +19,14 @@ query journalGet($id: UUID!) {
     description
   }
 }
+
+mutation journalUpdate($id: UUID!, $input: JournalUpdateInput!) {
+  journalUpdate(id: $id, input: $input) {
+    journal {
+      journalId
+      name
+      description
+      status
+    }
+  }
+}
