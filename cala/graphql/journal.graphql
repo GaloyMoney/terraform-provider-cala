@@ -10,3 +10,23 @@ mutation journalCreate($input: JournalCreateInput!) {
     }
   }
 }
+
+query journalGet($id: UUID!) {
+  journal(id: $id) {
+    journalId
+    name
+    status
+    description
+  }
+}
+
+mutation journalUpdate($id: UUID!, $input: JournalUpdateInput!) {
+  journalUpdate(id: $id, input: $input) {
+    journal {
+      journalId
+      name
+      description
+      status
+    }
+  }
+}
