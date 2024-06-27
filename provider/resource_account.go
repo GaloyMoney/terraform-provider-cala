@@ -188,22 +188,17 @@ func (r *AccountResource) Update(ctx context.Context, req resource.UpdateRequest
 		return
 	}
 
-	status, err := toStatus(data.Status.ValueString())
-	if err != nil {
-		resp.Diagnostics.AddError("Invalid Status", fmt.Sprintf("Unable to convert status to Status: %s", err))
-		return
-	}
-
+	// Prepare the input for the update mutation, only updating the name field
 	input := AccountUpdateInput{
 		Name:              data.Name.ValueStringPointer(),
-		Description: 		 data.Description.ValueStringPointer(),
+		Description:       data.Description.ValueStringPointer(),
+		Code:              data.Code.ValueStringPointer(),
 		NormalBalanceType: &normalBalanceType,
-		Status:            &status,
-		ExternalId: 			data.ExternalId.ValueStringPointer(),
-		Code: 						data.Code.ValueStringPointer(),
+		ExternalId:        data.ExternalId.ValueStringPointer(),
 	}
 
-	_, err = accountUpdate(ctx, *r.client, data.AccountId.ValueString(), input)
+	// Call the update mutation
+	response, err := accountUpdate(ctx, *r.client, data.AccountId.ValueString(), input)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update account, got error: %s", err))
 		return
@@ -211,12 +206,18 @@ func (r *AccountResource) Update(ctx context.Context, req resource.UpdateRequest
 
 	tflog.Trace(ctx, "updated an account")
 
-	readResp := &resource.ReadResponse{}
-	r.Read(ctx, resource.ReadRequest{
-		State: req.State,
-	}, readResp)
+	// Update the state with the new data
+	account := response.AccountUpdate.Account
 
-	resp.Diagnostics.Append(readResp.Diagnostics...)
+	data.AccountId = types.StringValue(account.AccountId)
+	data.Name = types.StringValue(account.Name)
+	data.Code = types.StringValue(account.Code)
+	data.Description = types.StringPointerValue(account.Description)
+	data.ExternalId = types.StringPointerValue(account.ExternalId)
+	data.NormalBalanceType = types.StringValue(string(account.NormalBalanceType))
+	data.Status = types.StringValue(string(account.Status))
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {

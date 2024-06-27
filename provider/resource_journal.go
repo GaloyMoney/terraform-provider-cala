@@ -51,7 +51,6 @@ func (r *JournalResource) Schema(ctx context.Context, req resource.SchemaRequest
 				Optional:            true,
 			},
 			"status": schema.StringAttribute{
-
 				MarkdownDescription: "status",
 				Default:             stringdefault.StaticString("ACTIVE"),
 				Computed:            true,
