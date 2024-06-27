@@ -97,6 +97,31 @@ func (r *AccountSetMemberAccountSetResource) Create(ctx context.Context, req res
 }
 
 func (r *AccountSetMemberAccountSetResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *AccountSetMemberAccountSetResourceModel
+
+	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
+
+	response, err := accountSetGet(ctx, *r.client, data.MemberAccountSetId.ValueString())
+
+	if err != nil {
+		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read account set, got error: %s", err))
+		return
+	}
+
+	found := false
+	for _, n := range response.GetAccountSet().Sets.Nodes {
+		if n.AccountSetId == data.AccountSetId.ValueString() {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		resp.State.RemoveResource(ctx)
+		return
+	}
+
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *AccountSetMemberAccountSetResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {

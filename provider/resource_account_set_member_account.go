@@ -116,7 +116,7 @@ func (r *AccountSetMemberAccountResource) Read(ctx context.Context, req resource
 	}
 
 	if !found {
-		resp.Diagnostics.AddError("Not Found", "The account set ID does not match any nodes.")
+		resp.State.RemoveResource(ctx)
 		return
 	}
 

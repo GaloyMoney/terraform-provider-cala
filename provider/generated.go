@@ -537,11 +537,12 @@ func (v *accountSetCreateResponse) GetAccountSetCreate() accountSetCreateAccount
 
 // accountSetGetAccountSet includes the requested fields of the GraphQL type AccountSet.
 type accountSetGetAccountSet struct {
-	AccountSetId      string        `json:"accountSetId"`
-	JournalId         string        `json:"journalId"`
-	Name              string        `json:"name"`
-	Description       *string       `json:"description"`
-	NormalBalanceType DebitOrCredit `json:"normalBalanceType"`
+	AccountSetId      string                                          `json:"accountSetId"`
+	JournalId         string                                          `json:"journalId"`
+	Name              string                                          `json:"name"`
+	Description       *string                                         `json:"description"`
+	NormalBalanceType DebitOrCredit                                   `json:"normalBalanceType"`
+	Sets              accountSetGetAccountSetSetsAccountSetConnection `json:"sets"`
 }
 
 // GetAccountSetId returns accountSetGetAccountSet.AccountSetId, and is useful for accessing the field via an interface.
@@ -558,6 +559,32 @@ func (v *accountSetGetAccountSet) GetDescription() *string { return v.Descriptio
 
 // GetNormalBalanceType returns accountSetGetAccountSet.NormalBalanceType, and is useful for accessing the field via an interface.
 func (v *accountSetGetAccountSet) GetNormalBalanceType() DebitOrCredit { return v.NormalBalanceType }
+
+// GetSets returns accountSetGetAccountSet.Sets, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSet) GetSets() accountSetGetAccountSetSetsAccountSetConnection {
+	return v.Sets
+}
+
+// accountSetGetAccountSetSetsAccountSetConnection includes the requested fields of the GraphQL type AccountSetConnection.
+type accountSetGetAccountSetSetsAccountSetConnection struct {
+	// A list of nodes.
+	Nodes []accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet `json:"nodes"`
+}
+
+// GetNodes returns accountSetGetAccountSetSetsAccountSetConnection.Nodes, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSetSetsAccountSetConnection) GetNodes() []accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet {
+	return v.Nodes
+}
+
+// accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet includes the requested fields of the GraphQL type AccountSet.
+type accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet struct {
+	AccountSetId string `json:"accountSetId"`
+}
+
+// GetAccountSetId returns accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet.AccountSetId, and is useful for accessing the field via an interface.
+func (v *accountSetGetAccountSetSetsAccountSetConnectionNodesAccountSet) GetAccountSetId() string {
+	return v.AccountSetId
+}
 
 // accountSetGetResponse is returned by accountSetGet on success.
 type accountSetGetResponse struct {
@@ -1637,6 +1664,11 @@ query accountSetGet ($id: UUID!) {
 		name
 		description
 		normalBalanceType
+		sets(first: 10) {
+			nodes {
+				accountSetId
+			}
+		}
 	}
 }
 `
