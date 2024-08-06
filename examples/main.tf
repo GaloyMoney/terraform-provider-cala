@@ -22,10 +22,6 @@ module "account_set_member_account_set" {
   source = "./resources/cala_account_set_member_account_set"
 }
 
-module "balance_sheet" {
-  source = "./resources/cala_balance_sheet"
-}
-
 module "bitfinex_integration" {
   source = "./resources/cala_bitfinex_integration"
 }
