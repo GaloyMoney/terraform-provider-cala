@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'refactor: remove bfx omnibus account set'
-      sha: 13bd2e53f84ced6b6678681dbbc823ce051fb2af
+      commitTitle: 'ci(dev): set version to 0.3.21-dev'
+      sha: 0c4fe739353c31d9607635e085b04c0130014d8a
       tags:
-      - 0.3.5-4-g13bd2e5
+      - 0.3.20-1-g0c4fe73
     path: vendor
   path: schema
 kind: LockConfig

@@ -12,6 +12,7 @@ type Account {
 	createdAt: Timestamp!
 	modifiedAt: Timestamp!
 	balance(journalId: UUID!, currency: CurrencyCode!): Balance
+	balanceInRange(journalId: UUID!, currency: CurrencyCode!, from: Timestamp!, until: Timestamp): RangedBalance
 	sets(first: Int!, after: String): AccountSetConnection!
 }
 
@@ -72,6 +73,7 @@ type AccountSet {
 	createdAt: Timestamp!
 	modifiedAt: Timestamp!
 	balance(currency: CurrencyCode!): Balance
+	balanceInRange(journalId: UUID!, currency: CurrencyCode!, from: Timestamp!, until: Timestamp): RangedBalance
 	members(first: Int!, after: String): AccountSetMemberConnection!
 	sets(first: Int!, after: String): AccountSetConnection!
 }
@@ -199,6 +201,7 @@ type Balance {
 	pending: BalanceAmount!
 	encumbrance: BalanceAmount!
 	version: Int!
+	available(layer: Layer!): BalanceAmount!
 }
 
 type BalanceAmount {
@@ -206,40 +209,6 @@ type BalanceAmount {
 	crBalance: Money!
 	normalBalance: Money!
 	entryId: UUID!
-}
-
-type BalanceSheet {
-	assets: AccountSet!
-	liabilities: AccountSet!
-	equity: AccountSet!
-	schedule1: AccountSet!
-	schedule2: AccountSet!
-	schedule3: AccountSet!
-	schedule4: AccountSet!
-	schedule5: AccountSet!
-	schedule6: AccountSet!
-	schedule7: AccountSet!
-	schedule8: AccountSet!
-	schedule9: AccountSet!
-	schedule10: AccountSet!
-	schedule11: AccountSet!
-	schedule12: AccountSet!
-}
-
-input BalanceSheetCreateInput {
-	journalId: UUID!
-}
-
-type BalanceSheetCreatePayload {
-	balanceSheet: BalanceSheet!
-}
-
-type BalanceSheetMutation {
-	create(input: BalanceSheetCreateInput!): BalanceSheetCreatePayload!
-}
-
-type BalanceSheetQuery {
-	byJournalId(journalId: UUID!): BalanceSheet
 }
 
 type BfxAddressBackedAccount {
@@ -319,12 +288,16 @@ enum BfxWithdrawalMethod {
 	TETHER_USX
 }
 
-type BigQueryExportCreatePayload {
-	job: Job!
+type BigQueryIntegration {
+	integrationId: UUID!
+	name: String!
+	description: String
+	gcpProjectId: String!
+	gcpDatasetId: String!
 }
 
-input BigQueryExportJobCreateInput {
-	jobId: UUID!
+input BigQueryIntegrationCreateInput {
+	integrationId: UUID!
 	name: String!
 	description: String
 	gcpProjectId: String!
@@ -332,8 +305,35 @@ input BigQueryExportJobCreateInput {
 	serviceAccountCredsBase64: String!
 }
 
+type BigQueryIntegrationCreatePayload {
+	integration: BigQueryIntegration!
+}
+
 type BigQueryMutation {
-	bqExportJobCreate(input: BigQueryExportJobCreateInput!): BigQueryExportCreatePayload!
+	integrationCreate(input: BigQueryIntegrationCreateInput!): BigQueryIntegrationCreatePayload!
+	tableCreate(input: BigQueryTableCreateInput!): BigQueryTableCreatePayload!
+	rowInsert(input: BigQueryRowInsertInput!): BigQueryRowInsertPayload!
+}
+
+input BigQueryRowInsertInput {
+	integrationId: UUID!
+	tableName: String!
+	rowData: JSON!
+}
+
+type BigQueryRowInsertPayload {
+	integration: BigQueryIntegration!
+}
+
+input BigQueryTableCreateInput {
+	integrationId: UUID!
+	tableName: String!
+	tableSchema: JSON!
+}
+
+type BigQueryTableCreatePayload {
+	tableName: String!
+	integration: BigQueryIntegration!
 }
 
 type BitfinexMutation {
@@ -372,16 +372,6 @@ enum DebitOrCredit {
 }
 
 scalar Decimal
-
-type EntryInput {
-	entryType: Expression!
-	accountId: Expression!
-	layer: Expression!
-	direction: Expression!
-	units: Expression!
-	currency: Expression!
-	description: Expression
-}
 
 scalar Expression
 
@@ -458,6 +448,12 @@ type JournalUpdatePayload {
 	journal: Journal!
 }
 
+enum Layer {
+	SETTLED
+	PENDING
+	ENCUMBRANCE
+}
+
 type Money {
 	units: Decimal!
 	currency: CurrencyCode!
@@ -467,7 +463,6 @@ type Mutation {
 	calaOutboxImportJobCreate(input: CalaOutboxImportJobCreateInput!): CalaOutboxImportJobCreatePayload!
 	bigQuery: BigQueryMutation!
 	bitfinex: BitfinexMutation!
-	balanceSheet: BalanceSheetMutation!
 	accountCreate(input: AccountCreateInput!): AccountCreatePayload!
 	accountUpdate(id: UUID!, input: AccountUpdateInput!): AccountUpdatePayload!
 	accountSetCreate(input: AccountSetCreateInput!): AccountSetCreatePayload!
@@ -477,7 +472,7 @@ type Mutation {
 	journalCreate(input: JournalCreateInput!): JournalCreatePayload!
 	journalUpdate(id: UUID!, input: JournalUpdateInput!): JournalUpdatePayload!
 	txTemplateCreate(input: TxTemplateCreateInput!): TxTemplateCreatePayload!
-	postTransaction(input: TransactionInput!): PostTransactionPayload!
+	transactionPost(input: TransactionInput!): TransactionPostPayload!
 }
 
 """
@@ -527,14 +522,9 @@ input ParamDefinitionInput {
 	description: String
 }
 
-type PostTransactionPayload {
-	transaction: Transaction!
-}
-
 type Query {
 	serverVersion: String!
 	bitfinex: BitfinexQuery!
-	balanceSheet: BalanceSheetQuery!
 	account(id: UUID!): Account
 	accountByExternalId(externalId: String!): Account
 	accountByCode(code: String!): Account
@@ -542,11 +532,18 @@ type Query {
 	accountSet(id: UUID!): AccountSet
 	journal(id: UUID!): Journal
 	balance(journalId: UUID!, accountId: UUID!, currency: CurrencyCode!): Balance
+	balanceInRange(journalId: UUID!, accountId: UUID!, currency: CurrencyCode!, from: Timestamp!, until: Timestamp): RangedBalance
 	transaction(id: UUID!): Transaction
 	transactionByExternalId(externalId: String!): Transaction
 	txTemplate(id: UUID!): TxTemplate
 	txTemplateByCode(code: String!): TxTemplate
 	jobs(first: Int!, after: String): JobConnection!
+}
+
+type RangedBalance {
+	start: Balance!
+	end: Balance!
+	diff: Balance!
 }
 
 input RemoveFromAccountSetInput {
@@ -588,13 +585,8 @@ input TransactionInput {
 	params: JSON
 }
 
-type TxInput {
-	effective: Expression!
-	journalId: Expression!
-	correlationId: Expression
-	externalId: Expression
-	description: Expression
-	metadata: Expression
+type TransactionPostPayload {
+	transaction: Transaction!
 }
 
 type TxTemplate {
@@ -603,8 +595,8 @@ type TxTemplate {
 	version: Int!
 	code: String!
 	params: [ParamDefinition!]
-	txInput: TxInput!
-	entries: [EntryInput!]!
+	transaction: TxTemplateTransaction!
+	entries: [TxTemplateEntry!]!
 	description: String
 	metadata: JSON
 	createdAt: Timestamp!
@@ -615,7 +607,7 @@ input TxTemplateCreateInput {
 	txTemplateId: UUID!
 	code: String!
 	params: [ParamDefinitionInput!]
-	txInput: TxTemplateTxInput!
+	transaction: TxTemplateTransactionInput!
 	entries: [TxTemplateEntryInput!]!
 	description: String
 	metadata: JSON
@@ -623,6 +615,16 @@ input TxTemplateCreateInput {
 
 type TxTemplateCreatePayload {
 	txTemplate: TxTemplate!
+}
+
+type TxTemplateEntry {
+	entryType: Expression!
+	accountId: Expression!
+	layer: Expression!
+	direction: Expression!
+	units: Expression!
+	currency: Expression!
+	description: Expression
 }
 
 input TxTemplateEntryInput {
@@ -635,7 +637,16 @@ input TxTemplateEntryInput {
 	description: Expression
 }
 
-input TxTemplateTxInput {
+type TxTemplateTransaction {
+	effective: Expression!
+	journalId: Expression!
+	correlationId: Expression
+	externalId: Expression
+	description: Expression
+	metadata: Expression
+}
+
+input TxTemplateTransactionInput {
 	effective: Expression!
 	journalId: Expression!
 	correlationId: Expression
