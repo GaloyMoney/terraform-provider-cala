@@ -315,6 +315,10 @@ type BigQueryMutation {
 	rowInsert(input: BigQueryRowInsertInput!): BigQueryRowInsertPayload!
 }
 
+type BigQueryQuery {
+	integration(id: UUID!): BigQueryIntegration
+}
+
 input BigQueryRowInsertInput {
 	integrationId: UUID!
 	tableName: String!
@@ -524,6 +528,7 @@ input ParamDefinitionInput {
 
 type Query {
 	serverVersion: String!
+	bigQuery: BigQueryQuery!
 	bitfinex: BitfinexQuery!
 	account(id: UUID!): Account
 	accountByExternalId(externalId: String!): Account

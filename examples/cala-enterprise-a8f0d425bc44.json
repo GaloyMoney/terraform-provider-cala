@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cala-enterprise",
+  "private_key_id": "a8f0d425bc441120a16788f6eb89e947b5d0d632",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCjtYXSXfhPNNNl\nWxqwuUpTBWssQtAp/0sQ41RGDBGWDoGAXKKA3hXxeMqQ9gB9gbe/FmMs9RKcNJah\nHCOjJPjzr+VRXcHTebG3KhPIK37rq+ZSN43l192PAR900D9RrvYBOpMaP6uUDidd\nQn5UsRDT6RITaedQVjl6Os5i89KKR7l6h4LYM2jJsWyEkI9VPkMO17m+0XNYLDNl\nwfsCQRLpjlHg7LznRtme2v7Q+nyYK7wZ1yRfasoPbvL1q1cHbhxDr4KjJiZsECur\nCbkUh2bcCNsPl7XgfVstkqfRYGvVrPBWX8kzWeBDozpy6Vpd8yMwe3iAv3hfjlQf\nIrKaEkflAgMBAAECggEAIRo2m8W4DK4KE8vS7wqccoKdO+crp95RC7Jn6z0L/ktj\nGLVCf6vIhJnv3dV8XmRxJuCsP54ze+XvUlb6BsZWV5II3MXISE5qZrbJprdS0+0f\npp7IoMHgMUchGPH157qo0DFLpupac5bUE1m7aT0fgbX2W3oV1YsF1scWze/u8dpB\npXnUU2P091FDSF2qQo94iG0EaEAA8PwDl9AzLWYlG6+JcBDZE1E+KXGZ1REHQqPn\nPUlCMHLZfzkC91iayBAgyJSFIJB61QxHEb1rO78D6DlU/Okx8C8+ON1vA08yzQu8\nLRkcx4pa6PaOuWpPjo+ZD891PmjlJ883uyd4bHfBQQKBgQDPG5QQbUHHCVqNo1bl\n6zSbDQX8766Mu8zA+IN1Su01kQZ3vxZx1k1ZbaddUwoJ4tWCnsm8c2OEHsATiP1P\nZbshXdZmNtdd4K1Qq6RLmA6ndRiJmLSiTqU3HtfWX6JhuG0yg2/Q2hy83fVvXl3q\nWkE8nMG1Gt/Rkri3ZVrrpwqEwQKBgQDKWyy6sA8XDQ1lkFYK6KjE07hit+Xz+XQh\nZSE3f+g3+IVvVtODdTD5Lu552kN9n+ycAm8zMtfmtHGmU9cN69qTYJIeEX2lgWuw\n9zmOeoBRQ7Ak1axOs0GnYqtO1/6M7rI9tDw0+c8i9NUMkI1olszQO4Sx84p+470V\nBwes6NsYJQKBgGRsePUmJTj/vhrj0uUVkaKFRBwLlFXFUllXp1aeiDrrIXm6/IUi\nZsswMnE8LKfyh5kYqbVpNh4AUx6l1D5Fk+FwAN/7Q57PrPpq3/WPu7tTOhyuIRh6\njf4WRI48PR6pMLnHpdZdjIXAEpx3444ZSXy8fej1KQYT4OF8kgOmMaGBAoGBAIza\nXg4s0rQm37Zce6foPuGSxfvhKe1jLBS6wh5RqCCdmrPfaidNAaPRqSmkZeoh0Z7e\niuzGbUYnQByYq08DZwfC5rKLVjxIE+AAlk24s2zdgtSA7wlw+Tg8FCYzbvpGhEcz\nF92ALVCVv16Zl/S/Ux128Gy1qyeb+leSpyMSir8JAoGAWqy3tRePJBS3DSR/GnP+\nCAZPnrXX4Ff+H33ymRskuTfzTK4zTZskhvgFwZVWcgIXGxukrsgGy1CHctv4ADOh\nJbCy6NGrJXPaAcD7dOcFv8baAVRjG+NOgiUV2nmXpbs3iGZJjCRBP+Sn/z0bMK6i\nelFGcuSll9CHRgKLr0vC9cQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gha-ci-cala-bq-access@cala-enterprise.iam.gserviceaccount.com",
+  "client_id": "117232228864903508261",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gha-ci-cala-bq-access%40cala-enterprise.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -22,6 +22,10 @@ module "account_set_member_account_set" {
   source = "./resources/cala_account_set_member_account_set"
 }
 
+module "big_query_integration" {
+  source = "./resources/cala_big_query_integration"
+}
+
 module "bitfinex_integration" {
   source = "./resources/cala_bitfinex_integration"
 }
@@ -30,7 +34,7 @@ terraform {
   required_providers {
     cala = {
       source  = "registry.terraform.io/galoymoney/cala"
-      version = "0.0.18"
+      version = "0.0.20"
     }
   }
 }

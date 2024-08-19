@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'ci(dev): set version to 0.3.21-dev'
-      sha: 0c4fe739353c31d9607635e085b04c0130014d8a
+      commitTitle: 'chore: audit ignore'
+      sha: 3d52070e9341a4c0e2889c694bc3bb09ff178e9c
       tags:
-      - 0.3.20-1-g0c4fe73
+      - 0.3.20-3-g3d52070
     path: vendor
   path: schema
 kind: LockConfig
