@@ -15,12 +15,12 @@ Cala Bitfinex Integration.
 ```terraform
 variable "bitfinex_key" {
   sensitive = true
-  default = "dummy"
+  default   = "dummy"
 }
 
 variable "bitfinex_secret" {
   sensitive = true
-  default = "dummy"
+  default   = "dummy"
 }
 
 resource "random_uuid" "journal_id" {}

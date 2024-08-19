@@ -1,0 +1,27 @@
+query bigQueryIntegrationGet($id: UUID!){
+  bigQuery {
+    integration(id: $id) {
+      integrationId
+      name
+      description
+      gcpProjectId
+      gcpDatasetId
+    }
+  }
+}
+
+mutation bigQueryIntegrationCreate($input: BigQueryIntegrationCreateInput!) {
+  bigQuery {
+    integrationCreate(
+      input: $input
+    ) {
+      integration {
+        integrationId
+        name
+        description
+        gcpProjectId
+        gcpDatasetId
+      }
+    }
+  }
+}

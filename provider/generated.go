@@ -152,6 +152,35 @@ func (v *BfxIntegrationCreateInput) GetKey() string { return v.Key }
 // GetSecret returns BfxIntegrationCreateInput.Secret, and is useful for accessing the field via an interface.
 func (v *BfxIntegrationCreateInput) GetSecret() string { return v.Secret }
 
+type BigQueryIntegrationCreateInput struct {
+	IntegrationId             string  `json:"integrationId"`
+	Name                      string  `json:"name"`
+	Description               *string `json:"description"`
+	GcpProjectId              string  `json:"gcpProjectId"`
+	GcpDatasetId              string  `json:"gcpDatasetId"`
+	ServiceAccountCredsBase64 string  `json:"serviceAccountCredsBase64"`
+}
+
+// GetIntegrationId returns BigQueryIntegrationCreateInput.IntegrationId, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetIntegrationId() string { return v.IntegrationId }
+
+// GetName returns BigQueryIntegrationCreateInput.Name, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetName() string { return v.Name }
+
+// GetDescription returns BigQueryIntegrationCreateInput.Description, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetDescription() *string { return v.Description }
+
+// GetGcpProjectId returns BigQueryIntegrationCreateInput.GcpProjectId, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetGcpProjectId() string { return v.GcpProjectId }
+
+// GetGcpDatasetId returns BigQueryIntegrationCreateInput.GcpDatasetId, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetGcpDatasetId() string { return v.GcpDatasetId }
+
+// GetServiceAccountCredsBase64 returns BigQueryIntegrationCreateInput.ServiceAccountCredsBase64, and is useful for accessing the field via an interface.
+func (v *BigQueryIntegrationCreateInput) GetServiceAccountCredsBase64() string {
+	return v.ServiceAccountCredsBase64
+}
+
 type DebitOrCredit string
 
 const (
@@ -323,6 +352,22 @@ type __bfxIntegrationGetInput struct {
 
 // GetId returns __bfxIntegrationGetInput.Id, and is useful for accessing the field via an interface.
 func (v *__bfxIntegrationGetInput) GetId() string { return v.Id }
+
+// __bigQueryIntegrationCreateInput is used internally by genqlient
+type __bigQueryIntegrationCreateInput struct {
+	Input BigQueryIntegrationCreateInput `json:"input"`
+}
+
+// GetInput returns __bigQueryIntegrationCreateInput.Input, and is useful for accessing the field via an interface.
+func (v *__bigQueryIntegrationCreateInput) GetInput() BigQueryIntegrationCreateInput { return v.Input }
+
+// __bigQueryIntegrationGetInput is used internally by genqlient
+type __bigQueryIntegrationGetInput struct {
+	Id string `json:"id"`
+}
+
+// GetId returns __bigQueryIntegrationGetInput.Id, and is useful for accessing the field via an interface.
+func (v *__bigQueryIntegrationGetInput) GetId() string { return v.Id }
 
 // __journalCreateInput is used internally by genqlient
 type __journalCreateInput struct {
@@ -952,6 +997,124 @@ func (v *bfxIntegrationGetResponse) GetBitfinex() bfxIntegrationGetBitfinexBitfi
 	return v.Bitfinex
 }
 
+// bigQueryIntegrationCreateBigQueryBigQueryMutation includes the requested fields of the GraphQL type BigQueryMutation.
+type bigQueryIntegrationCreateBigQueryBigQueryMutation struct {
+	IntegrationCreate bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload `json:"integrationCreate"`
+}
+
+// GetIntegrationCreate returns bigQueryIntegrationCreateBigQueryBigQueryMutation.IntegrationCreate, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutation) GetIntegrationCreate() bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload {
+	return v.IntegrationCreate
+}
+
+// bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload includes the requested fields of the GraphQL type BigQueryIntegrationCreatePayload.
+type bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload struct {
+	Integration bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration `json:"integration"`
+}
+
+// GetIntegration returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload.Integration, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayload) GetIntegration() bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration {
+	return v.Integration
+}
+
+// bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration includes the requested fields of the GraphQL type BigQueryIntegration.
+type bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration struct {
+	IntegrationId string  `json:"integrationId"`
+	Name          string  `json:"name"`
+	Description   *string `json:"description"`
+	GcpProjectId  string  `json:"gcpProjectId"`
+	GcpDatasetId  string  `json:"gcpDatasetId"`
+}
+
+// GetIntegrationId returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration.IntegrationId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration) GetIntegrationId() string {
+	return v.IntegrationId
+}
+
+// GetName returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration.Name, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration) GetName() string {
+	return v.Name
+}
+
+// GetDescription returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration.Description, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration) GetDescription() *string {
+	return v.Description
+}
+
+// GetGcpProjectId returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration.GcpProjectId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration) GetGcpProjectId() string {
+	return v.GcpProjectId
+}
+
+// GetGcpDatasetId returns bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration.GcpDatasetId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateBigQueryBigQueryMutationIntegrationCreateBigQueryIntegrationCreatePayloadIntegrationBigQueryIntegration) GetGcpDatasetId() string {
+	return v.GcpDatasetId
+}
+
+// bigQueryIntegrationCreateResponse is returned by bigQueryIntegrationCreate on success.
+type bigQueryIntegrationCreateResponse struct {
+	BigQuery bigQueryIntegrationCreateBigQueryBigQueryMutation `json:"bigQuery"`
+}
+
+// GetBigQuery returns bigQueryIntegrationCreateResponse.BigQuery, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationCreateResponse) GetBigQuery() bigQueryIntegrationCreateBigQueryBigQueryMutation {
+	return v.BigQuery
+}
+
+// bigQueryIntegrationGetBigQueryBigQueryQuery includes the requested fields of the GraphQL type BigQueryQuery.
+type bigQueryIntegrationGetBigQueryBigQueryQuery struct {
+	Integration *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration `json:"integration"`
+}
+
+// GetIntegration returns bigQueryIntegrationGetBigQueryBigQueryQuery.Integration, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQuery) GetIntegration() *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration {
+	return v.Integration
+}
+
+// bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration includes the requested fields of the GraphQL type BigQueryIntegration.
+type bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration struct {
+	IntegrationId string  `json:"integrationId"`
+	Name          string  `json:"name"`
+	Description   *string `json:"description"`
+	GcpProjectId  string  `json:"gcpProjectId"`
+	GcpDatasetId  string  `json:"gcpDatasetId"`
+}
+
+// GetIntegrationId returns bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration.IntegrationId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration) GetIntegrationId() string {
+	return v.IntegrationId
+}
+
+// GetName returns bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration.Name, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration) GetName() string {
+	return v.Name
+}
+
+// GetDescription returns bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration.Description, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration) GetDescription() *string {
+	return v.Description
+}
+
+// GetGcpProjectId returns bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration.GcpProjectId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration) GetGcpProjectId() string {
+	return v.GcpProjectId
+}
+
+// GetGcpDatasetId returns bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration.GcpDatasetId, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetBigQueryBigQueryQueryIntegrationBigQueryIntegration) GetGcpDatasetId() string {
+	return v.GcpDatasetId
+}
+
+// bigQueryIntegrationGetResponse is returned by bigQueryIntegrationGet on success.
+type bigQueryIntegrationGetResponse struct {
+	BigQuery bigQueryIntegrationGetBigQueryBigQueryQuery `json:"bigQuery"`
+}
+
+// GetBigQuery returns bigQueryIntegrationGetResponse.BigQuery, and is useful for accessing the field via an interface.
+func (v *bigQueryIntegrationGetResponse) GetBigQuery() bigQueryIntegrationGetBigQueryBigQueryQuery {
+	return v.BigQuery
+}
+
 // journalCreateJournalCreateJournalCreatePayload includes the requested fields of the GraphQL type JournalCreatePayload.
 type journalCreateJournalCreateJournalCreatePayload struct {
 	Journal journalCreateJournalCreateJournalCreatePayloadJournal `json:"journal"`
@@ -1561,6 +1724,90 @@ func bfxIntegrationGet(
 	var err_ error
 
 	var data_ bfxIntegrationGetResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by bigQueryIntegrationCreate.
+const bigQueryIntegrationCreate_Operation = `
+mutation bigQueryIntegrationCreate ($input: BigQueryIntegrationCreateInput!) {
+	bigQuery {
+		integrationCreate(input: $input) {
+			integration {
+				integrationId
+				name
+				description
+				gcpProjectId
+				gcpDatasetId
+			}
+		}
+	}
+}
+`
+
+func bigQueryIntegrationCreate(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	input BigQueryIntegrationCreateInput,
+) (*bigQueryIntegrationCreateResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "bigQueryIntegrationCreate",
+		Query:  bigQueryIntegrationCreate_Operation,
+		Variables: &__bigQueryIntegrationCreateInput{
+			Input: input,
+		},
+	}
+	var err_ error
+
+	var data_ bigQueryIntegrationCreateResponse
+	resp_ := &graphql.Response{Data: &data_}
+
+	err_ = client_.MakeRequest(
+		ctx_,
+		req_,
+		resp_,
+	)
+
+	return &data_, err_
+}
+
+// The query or mutation executed by bigQueryIntegrationGet.
+const bigQueryIntegrationGet_Operation = `
+query bigQueryIntegrationGet ($id: UUID!) {
+	bigQuery {
+		integration(id: $id) {
+			integrationId
+			name
+			description
+			gcpProjectId
+			gcpDatasetId
+		}
+	}
+}
+`
+
+func bigQueryIntegrationGet(
+	ctx_ context.Context,
+	client_ graphql.Client,
+	id string,
+) (*bigQueryIntegrationGetResponse, error) {
+	req_ := &graphql.Request{
+		OpName: "bigQueryIntegrationGet",
+		Query:  bigQueryIntegrationGet_Operation,
+		Variables: &__bigQueryIntegrationGetInput{
+			Id: id,
+		},
+	}
+	var err_ error
+
+	var data_ bigQueryIntegrationGetResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

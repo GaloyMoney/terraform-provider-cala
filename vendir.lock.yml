@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: 'refactor: remove bfx omnibus account set'
-      sha: 13bd2e53f84ced6b6678681dbbc823ce051fb2af
+      commitTitle: 'chore: audit ignore'
+      sha: 3d52070e9341a4c0e2889c694bc3bb09ff178e9c
       tags:
-      - 0.3.5-4-g13bd2e5
+      - 0.3.20-3-g3d52070
     path: vendor
   path: schema
 kind: LockConfig

@@ -23,9 +23,9 @@ resource "cala_account" "alice" {
 
 resource "random_uuid" "bank" {}
 resource "cala_account" "bank" {
-  id   = random_uuid.bank.result
-  name = "Bank cash"
-  code = "BANK.DEPOSITS.${random_uuid.bank.result}"
+  id                  = random_uuid.bank.result
+  name                = "Bank cash"
+  code                = "BANK.DEPOSITS.${random_uuid.bank.result}"
   normal_balance_type = "DEBIT"
 }
 ```
